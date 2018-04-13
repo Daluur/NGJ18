@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : IPlayer {
+public class PlayerHealth : MonoBehaviour, IPlayer {
 
 	public void TakeDamage(int amount)
 	{
