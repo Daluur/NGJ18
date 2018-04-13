@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour {
 
-    public List<GameObject> Players = new List<GameObject>();
+    public GameObject[] Players;
     public GameObject targetedPlayer;
     public NavMeshAgent navAgent;
 

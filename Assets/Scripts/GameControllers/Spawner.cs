@@ -1,0 +1,74 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Spawner : MonoBehaviour {
+
+    public float SpawnInterval = 1;
+    public float SpawnIntervalDecrease = 0.05f;
+    public float TimeBeforeSpawnIntervalDecreases = 30f;
+
+    public GameObject[] SpawnPoints;
+    public GameObject EnemyPrefab;
+    public GameObject[] Players;
+
+	// Use this for initialization
+	void Start () {
+        StartEnemySpawning();
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+
+
+    private void FixedUpdate()
+    {
+
+    }
+
+    private void StartEnemySpawning() {
+        StartCoroutine(SpawnEnemies());
+        StartCoroutine(SpawnIntervalDecreaseCoroutine());
+    }
+
+    private IEnumerator SpawnIntervalDecreaseCoroutine() {
+        while (true) {
+            yield return new WaitForSeconds(TimeBeforeSpawnIntervalDecreases);
+            if(SpawnInterval - SpawnIntervalDecrease > 0.015f)
+            {
+                SpawnInterval -= SpawnIntervalDecrease;
+            }
+        }
+    }
+    
+    private IEnumerator SpawnEnemies() {
+        while (true)
+        {
+            yield return new WaitForSeconds(SpawnInterval);
+            SpawnEnemy();
+        }
+    }
+
+    private void SpawnEnemy() {
+        Debug.Log(SpawnInterval);
+        var spawnPointIdx = Random.Range(0, SpawnPoints.Length + 1);
+        if(spawnPointIdx == SpawnPoints.Length) {
+            foreach(var sp in SpawnPoints)
+            {
+                ActualSpawnEnemy(sp.transform.position);
+            }
+        }
+        else {
+            ActualSpawnEnemy(SpawnPoints[spawnPointIdx].transform.position);
+        }
+    }
+
+    private void ActualSpawnEnemy(Vector3 spawnPos) {
+        var go = Instantiate(EnemyPrefab, spawnPos, Quaternion.identity);
+        go.GetComponent<EnemyMovement>().Players = Players;
+    }
+
+
+}

@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 403283948}
   - component: {fileID: 403283949}
   m_Layer: 0
-  m_Name: GameObject (3)
+  m_Name: TempPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,6 +166,78 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c19eb763f184545883e6fe949860e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &473014253
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 114980978898274512, guid: d8df8f65577f7bc48a77d6d62fd7fe9e,
+        type: 2}
+      propertyPath: Players.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291883210117014, guid: d8df8f65577f7bc48a77d6d62fd7fe9e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.10151982
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291883210117014, guid: d8df8f65577f7bc48a77d6d62fd7fe9e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5.1105165
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291883210117014, guid: d8df8f65577f7bc48a77d6d62fd7fe9e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -6.168134
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291883210117014, guid: d8df8f65577f7bc48a77d6d62fd7fe9e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291883210117014, guid: d8df8f65577f7bc48a77d6d62fd7fe9e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291883210117014, guid: d8df8f65577f7bc48a77d6d62fd7fe9e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291883210117014, guid: d8df8f65577f7bc48a77d6d62fd7fe9e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291883210117014, guid: d8df8f65577f7bc48a77d6d62fd7fe9e, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114980978898274512, guid: d8df8f65577f7bc48a77d6d62fd7fe9e,
+        type: 2}
+      propertyPath: Players.Array.data[0]
+      value: 
+      objectReference: {fileID: 1910946673}
+    - target: {fileID: 114980978898274512, guid: d8df8f65577f7bc48a77d6d62fd7fe9e,
+        type: 2}
+      propertyPath: Players.Array.data[1]
+      value: 
+      objectReference: {fileID: 955936095}
+    - target: {fileID: 114980978898274512, guid: d8df8f65577f7bc48a77d6d62fd7fe9e,
+        type: 2}
+      propertyPath: Players.Array.data[2]
+      value: 
+      objectReference: {fileID: 1850131820}
+    - target: {fileID: 114980978898274512, guid: d8df8f65577f7bc48a77d6d62fd7fe9e,
+        type: 2}
+      propertyPath: Players.Array.data[3]
+      value: 
+      objectReference: {fileID: 403283946}
+    - target: {fileID: 114980978898274512, guid: d8df8f65577f7bc48a77d6d62fd7fe9e,
+        type: 2}
+      propertyPath: TimeBeforeSpawnIntervalDecreases
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: d8df8f65577f7bc48a77d6d62fd7fe9e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &573126688
 Prefab:
   m_ObjectHideFlags: 0
@@ -239,7 +311,7 @@ GameObject:
   - component: {fileID: 955936097}
   - component: {fileID: 955936098}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: TempPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -676,7 +748,7 @@ GameObject:
   - component: {fileID: 1850131822}
   - component: {fileID: 1850131823}
   m_Layer: 0
-  m_Name: GameObject (2)
+  m_Name: TempPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -729,7 +801,7 @@ GameObject:
   - component: {fileID: 1910946675}
   - component: {fileID: 1910946676}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: TempPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
