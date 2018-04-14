@@ -15,6 +15,7 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
     public float BreakDuration = 10f;
 	public GameObject BreakParticles;
     public int InsanityDamage = 120;
+    public Animator anim;
 
     public float InsanityStartTime;
 
@@ -87,12 +88,14 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
 
     private IEnumerator BreakingSequence() {
 		Instantiate(BreakParticles, transform.position, Quaternion.identity);
+        anim.SetTrigger("PlayerBreaking");
         InsaneConversionAnimPlaying = true;
         yield return new WaitForSeconds(BreakingAnimTimeStart);
         InsaneConversionAnimPlaying = false;
         InsanityStartTime = Time.timeSinceLevelLoad;
         yield return new WaitForSeconds(BreakDuration);
         InsaneConversionAnimPlaying = true;
+        anim.SetTrigger("PlayerNormal");
         yield return new WaitForSeconds(BreakingAnimTimeEnd);
         InsaneConversionAnimPlaying = false;
 		StartCoroutine(audioManager.ChangeBackgroundPitch(1.4f, 1.08f, 3f));
