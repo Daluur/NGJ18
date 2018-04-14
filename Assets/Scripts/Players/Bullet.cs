@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour {
 	public int Damage = 10;
 	private Vector3 direction;
     private IPlayer player;
+	public GameObject WallHitParticles;
 
 	private void Start()
 	{
@@ -39,6 +40,16 @@ public class Bullet : MonoBehaviour {
 				otherPlayer.TakeDamage(Damage, player);
 				Destroy(gameObject);
 			}
+		} else if(other.tag == "Boundary")
+		{
+			Destroy(gameObject);
+		} else if(other.tag == "Wall")
+		{
+			if (WallHitParticles != null)
+			{
+				Instantiate(WallHitParticles, transform.position, Quaternion.identity);
+			}
+			Destroy(gameObject);
 		}
 	}
 }

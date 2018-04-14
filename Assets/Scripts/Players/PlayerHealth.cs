@@ -13,10 +13,10 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
     public bool InsaneConversionAnimPlaying;
     public float BreakingAnimTimeStart = 1f, BreakingAnimTimeEnd = 1f;
     public float BreakDuration = 10f;
+	public GameObject BreakParticles;
     public int InsanityDamage = 120;
 
     public float InsanityStartTime;
-
 
     public void RewardSanity(int amount)
     {
@@ -60,6 +60,7 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
     }
 
     private IEnumerator BreakingSequence() {
+		Instantiate(BreakParticles, transform.position, Quaternion.identity);
         InsaneConversionAnimPlaying = true;
         yield return new WaitForSeconds(BreakingAnimTimeStart);
         InsaneConversionAnimPlaying = false;
