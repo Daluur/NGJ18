@@ -79,7 +79,6 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
         if (IsInsane)
             return;
         IsInsane = true;
-        Debug.Log("IsInsane");
 		audioManager.PlaySound (audioSource, insanitySound);
 		StartCoroutine(audioManager.ChangeBackgroundPitch(1.08f, 1.4f, 2f));
         StartCoroutine(BreakingSequence());

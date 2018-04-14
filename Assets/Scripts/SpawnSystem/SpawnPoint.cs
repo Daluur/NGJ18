@@ -29,7 +29,6 @@ public class SpawnPoint : MonoBehaviour {
     }
 
     private IEnumerator ShowParticleSystemBeforeSpawn() {
-        Debug.Log(gameObject.name);
         yield return new WaitForSeconds(SpawnDelayForPS);
         var idToSpawn = Random.Range(0, EnemiesItCanSpawn.Length);
         var enemyToSpawn = EnemiesItCanSpawn[idToSpawn];
