@@ -39,6 +39,7 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
 
 	public AudioManager audioManager;
 	public AudioClip insanitySound;
+	public AudioClip godModeSound;
 
 	private AudioSource audioSource;
 
@@ -56,6 +57,9 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
         if (Sanity + amount >= MaxSanity) {
             Sanity = MaxSanity;
             if (!GodMode) { 
+				audioSource.pitch = 1.2f;
+				audioManager.PlaySound (audioSource, godModeSound, 1f, true);
+				audioSource.pitch = 1f;
                 StartCoroutine(GodModeTimer());
             }
 

@@ -255,7 +255,7 @@ MonoBehaviour:
   SanityReward: 2
   DieOnPlayerHit: 1
   anim: {fileID: 95922373038059666}
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: b0769cbf03ec84828a257fbdf10f116a, type: 3}
   audioManager: {fileID: 0}
 --- !u!136 &136183913380600418
 CapsuleCollider:
