@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour {
 
     public GameObject[] SpawnPoints;
     public GameObject EnemyPrefab;
-    public GameObject[] Players;
+
 
 	// Use this for initialization
 	void Start () {
@@ -67,7 +67,7 @@ public class Spawner : MonoBehaviour {
 
     private void ActualSpawnEnemy(Vector3 spawnPos) {
         var go = Instantiate(EnemyPrefab, spawnPos, Quaternion.identity);
-        go.GetComponent<EnemyMovement>().Players = Players;
+        go.GetComponent<EnemyMovement>().Players = PlayerManager.Instance.Players;
     }
 
 
