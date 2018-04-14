@@ -20,7 +20,7 @@ public class FollowPlayer : MonoBehaviour {
 		{
 			if (!player.playerHealth.GetIsInsane()) {
 				MonsterParticles.SetActive(false);
-				PlayerParticles.SetActive(true);
+				// PlayerParticles.SetActive(true);
 			}
 		}
 		else
@@ -28,7 +28,7 @@ public class FollowPlayer : MonoBehaviour {
 			if(player.playerHealth.GetIsInsane())
 			{
 				MonsterParticles.SetActive(true);
-				PlayerParticles.SetActive(false);
+				// PlayerParticles.SetActive(false);
 			}
 		}
 		transform.position = player.transform.position;

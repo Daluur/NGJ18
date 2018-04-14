@@ -19,7 +19,8 @@ public class PlayerController : GeneralPlayer {
 	public int controllerID = 0;
 	public int playerID = 0;
 
-	private bool isShooting;
+    [HideInInspector]
+	public bool isShooting;
 	public GameObject shootParticles;
 
 	private string moveXString;

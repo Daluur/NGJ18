@@ -16,6 +16,8 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
 	public GameObject BreakParticles;
     public int InsanityDamage = 120;
     public Animator anim;
+    public float GodModeDuration;
+    [HideInInspector]
     public bool GodMode = false;
 
     public float InsanityStartTime;
@@ -46,8 +48,15 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
 	
     public void RewardSanity(int amount)
     {
-        if (Sanity + amount >= MaxSanity) { 
+        if (GodMode)
+            return;
+        if (Sanity + amount >= MaxSanity) {
             Sanity = MaxSanity;
+            if (!GodMode) { 
+                GodMode = true;
+                StartCoroutine(GodModeTimer());
+            }
+
         }
         else
             Sanity += amount;
@@ -55,6 +64,8 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
 
     public void TakeDamage(int amount)
 	{
+        if (GodMode)
+            return;
         if (Sanity - amount <= 0)
         {
             StartBreakingSequence();
@@ -77,8 +88,11 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
 
 	public void TakeDamage(int amount, IPlayer player)
 	{
-		TakeDamage(amount);
-		player.TakeDamage(amount);
+		if (!GetIsInsane())
+		{
+			TakeDamage(amount / 2);
+			player.TakeDamage(amount / 2);
+		}
 	}
 
     private void StartBreakingSequence() {
@@ -126,5 +140,11 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
     public void OnDestroy()
     {
         StopAllCoroutines();
+    }
+
+    private IEnumerator GodModeTimer() {
+        yield return new WaitForSeconds(GodModeDuration);
+        GodMode = false;
+        Sanity = (int)(MaxSanity * 0.2f);
     }
 }

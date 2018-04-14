@@ -12,6 +12,11 @@ public class PlayerShoot : MonoBehaviour {
 	private int lastBulletTypeFired = 0;
 	private int amountOfBullets;
 
+    public LineRenderer Laser;
+    public LayerMask LaserLayerMask;
+    public float LaserDamagerPerSecond = 20;
+    public CapsuleCollider LaserCollider;
+
 	public AudioManager audioManager;
 	public AudioClip[] shootingSound;
 
@@ -30,6 +35,24 @@ public class PlayerShoot : MonoBehaviour {
 
 	public void Shoot()
 	{
+        if (playerHealth.GodMode)
+        {
+            RaycastHit hit;
+            if(Physics.Raycast(BulletSpawnPosition.position, BulletSpawnPosition.forward, out hit, 1000f, LaserLayerMask))
+            {
+                LaserCollider.transform.localScale = new Vector3(hit.distance, 1f, 1f);
+                LaserCollider.transform.position = BulletSpawnPosition.position + BulletSpawnPosition.forward * hit.distance / 2;
+            }
+            else {
+                LaserCollider.transform.localScale = new Vector3(100f, 1f, 1f);
+                LaserCollider.transform.position = BulletSpawnPosition.position + BulletSpawnPosition.forward * 100f / 2;
+            }
+
+            LaserCollider.transform.position += new Vector3(0f, 0.2f, 0f);
+            
+            return;
+        }
+
 		if(timeSinceLastFire < FireRate)
 		{
 			return;
