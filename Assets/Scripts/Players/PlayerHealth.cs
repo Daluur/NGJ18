@@ -16,6 +16,7 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
 	public GameObject BreakParticles;
     public int InsanityDamage = 120;
     public Animator anim;
+    public bool GodMode = false;
 
     public float InsanityStartTime;
 
@@ -45,7 +46,11 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
 	
     public void RewardSanity(int amount)
     {
-        Sanity += amount;
+        if (Sanity + amount >= MaxSanity) { 
+            Sanity = MaxSanity;
+        }
+        else
+            Sanity += amount;
     }
 
     public void TakeDamage(int amount)
