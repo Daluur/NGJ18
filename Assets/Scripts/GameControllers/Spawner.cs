@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Spawner : MonoBehaviour {
 
@@ -68,7 +69,7 @@ public class Spawner : MonoBehaviour {
 
     private void ActualSpawnEnemy(Vector3 spawnPos) {
         var go = Instantiate(EnemyPrefab, spawnPos, Quaternion.identity);
-        go.GetComponent<EnemyMovement>().Players = PlayerManager.Instance.Players.ToArray();
+        go.GetComponent<EnemyMovement>().Players = PlayerManager.Instance.Players.Select(t => t.go).ToArray();
     }
 
 

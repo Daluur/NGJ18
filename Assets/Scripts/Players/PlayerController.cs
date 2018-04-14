@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
 	public float MoveSpeed = 3;
 	public Transform GunModel;
 	public PlayerShoot Gun;
+    public IPlayer player;
 
 	public int controllerID = 0;
 	public int playerID = 0;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour {
 		controllerID = data.ControllerID;
 		playerID = data.PlayerID;
 		SetupInputVariables();
+        player = gameObject.GetComponent<IPlayer>();
 	}
 
 	private void SetupInputVariables()
@@ -46,6 +48,12 @@ public class PlayerController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        if (player.GetIsInsane())
+        {
+            //TODO: Do the custom input thing that should happen when insane
+            return;
+        }
+
 		var xAxis = Input.GetAxis(moveXString) * MoveSpeed * Time.deltaTime;
 		var yAxis = Input.GetAxis(moveYString) * MoveSpeed * Time.deltaTime;
 
