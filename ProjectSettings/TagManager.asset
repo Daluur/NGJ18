@@ -10,6 +10,9 @@ TagManager:
   - Boundary
   - Playermanager
   - UIHandler
+  - Team1
+  - Team2
+  - SpawnerSR
   layers:
   - Default
   - TransparentFX
