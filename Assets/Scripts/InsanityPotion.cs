@@ -16,6 +16,18 @@ public class InsanityPotion : MonoBehaviour {
 	private Vector3 scale = Vector3.zero;
 	private float timeInScene = 0f;
 
+	[HideInInspector]
+	public AudioManager audioManager;
+	public AudioClip potionSound;
+
+	private AudioSource audioSource;
+
+	void Awake() 
+	{
+		audioSource = gameObject.GetComponent<AudioSource> ();
+		audioManager = GameObject.Find ("AudioManager").GetComponent<AudioManager> ();
+	}
+
 	private void Start()
 	{
 		scaleTime = 1 / scaleTime;
@@ -54,6 +66,7 @@ public class InsanityPotion : MonoBehaviour {
 	{
 		if(other.tag == "Player")
 		{
+			audioManager.PlaySound (audioSource, potionSound, 1.2f, true); 
 			other.GetComponent<IPlayer>().RewardSanity(RewardInsanityAmount);
 			Destroy(gameObject);
 		}

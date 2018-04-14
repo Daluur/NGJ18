@@ -124,6 +124,8 @@ MonoBehaviour:
   BlinkSpeed: 0.2
   RemoveAfterSeconds: 6
   renderer: {fileID: 212966102870461426}
+  audioManager: {fileID: 0}
+  potionSound: {fileID: 8300000, guid: 1aa840f66e91d43649cf5772b1c1c3df, type: 3}
 --- !u!212 &212966102870461426
 SpriteRenderer:
   m_ObjectHideFlags: 1
