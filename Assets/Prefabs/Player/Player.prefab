@@ -285,6 +285,7 @@ MonoBehaviour:
   GunModel: {fileID: 4043526494087462}
   Gun: {fileID: 114378735040527690}
   controllerID: 0
+  playerID: 0
 --- !u!114 &114378735040527690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -299,6 +300,7 @@ MonoBehaviour:
   BulletSpawnPosition: {fileID: 4033944034180566}
   Bullet: {fileID: 1831538846754158, guid: ee813ed16b796fb418feeabae77184de, type: 2}
   playerHealth: {fileID: 114559562143642398}
+  FireRate: 0.3
 --- !u!114 &114559562143642398
 MonoBehaviour:
   m_ObjectHideFlags: 1

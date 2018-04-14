@@ -54,7 +54,6 @@ public class Spawner : MonoBehaviour {
     }
 
     private void SpawnEnemy() {
-        Debug.Log(SpawnInterval);
         var spawnPointIdx = Random.Range(0, SpawnPoints.Length + 1);
         if(spawnPointIdx == SpawnPoints.Length) {
             foreach(var sp in SpawnPoints)

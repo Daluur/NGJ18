@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour {
 			GunModel.eulerAngles = new Vector3(GunModel.eulerAngles.x, Mathf.Atan2(torsoX, torsoY) * Mathf.Rad2Deg, GunModel.eulerAngles.z);
 		}
 
-		if (Input.GetButtonDown(shootString))
+		if (Input.GetButton(shootString))
 		{
 			Gun.Shoot();
 		}

@@ -9,6 +9,11 @@ public class Bullet : MonoBehaviour {
 	private Vector3 direction;
     private IPlayer player;
 
+	private void Start()
+	{
+		Destroy(gameObject, 10);
+	}
+
 	public void Setup(Vector3 dir, IPlayer player)
 	{
         this.player = player;
