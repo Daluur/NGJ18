@@ -34,7 +34,8 @@ public class Spawner : MonoBehaviour {
     }
 
     private IEnumerator SpawnIntervalDecreaseCoroutine() {
-        while (true) {
+		yield return new WaitForSeconds(3);
+		while (true) {
             yield return new WaitForSeconds(TimeBeforeSpawnIntervalDecreases);
             if(SpawnInterval - SpawnIntervalDecrease > 0.015f)
             {
@@ -44,6 +45,7 @@ public class Spawner : MonoBehaviour {
     }
     
     private IEnumerator SpawnEnemies() {
+		yield return new WaitForSeconds(3);
         while (true)
         {
             yield return new WaitForSeconds(SpawnInterval);
@@ -67,7 +69,7 @@ public class Spawner : MonoBehaviour {
 
     private void ActualSpawnEnemy(Vector3 spawnPos) {
         var go = Instantiate(EnemyPrefab, spawnPos, Quaternion.identity);
-        go.GetComponent<EnemyMovement>().Players = PlayerManager.Instance.Players;
+        go.GetComponent<EnemyMovement>().Players = PlayerManager.Instance.Players.ToArray();
     }
 
 

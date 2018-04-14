@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce22f100e8dc0c442ac425a6fad33748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 25
+  Health: 20
   DeathAnim: {fileID: 1946258039018108, guid: 37bd8aedbe7ca274e88f3dc91e6cf1be, type: 2}
   Damage: 1
   SanityReward: 2

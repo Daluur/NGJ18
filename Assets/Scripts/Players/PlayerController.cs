@@ -9,14 +9,22 @@ public class PlayerController : MonoBehaviour {
 	public PlayerShoot Gun;
 
 	public int controllerID = 0;
+	public int playerID = 0;
 
 	private string moveXString;
 	private string moveYString;
 	private string torsoXString;
 	private string torsoYString;
 	private string shootString;
+	
+	public void Setup(PlayerControllerData data)
+	{
+		controllerID = data.ControllerID;
+		playerID = data.PlayerID;
+		SetupInputVariables();
+	}
 
-	void Start()
+	private void SetupInputVariables()
 	{
 		if (controllerID == 0)
 		{

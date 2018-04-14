@@ -5,17 +5,16 @@ using UnityEngine.UI;
 
 public class SanityBar : MonoBehaviour {
 
-    public int ID;
     public Image Background, Bar;
     public Color BackgroundColor = Color.grey, NormalColor = Color.green, CriticalColor = Color.red;
 
-
     private PlayerHealth playerHealth;
 
-	// Use this for initialization
-	void Start () {
-        playerHealth = PlayerManager.Instance.Players[ID - 1].GetComponent<PlayerHealth>();
-        Background.color = BackgroundColor;
+	public void AssignPlayer(PlayerHealth player)
+	{
+		playerHealth = player;
+		Background.color = BackgroundColor;
+		gameObject.SetActive(true);
 	}
 	
 	// Update is called once per frame

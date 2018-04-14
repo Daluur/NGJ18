@@ -45,7 +45,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1442657005738362
 GameObject:
   m_ObjectHideFlags: 1
@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 223491327109162016}
   - component: {fileID: 114216191444557572}
   - component: {fileID: 114882793448121614}
+  - component: {fileID: 114912784955939736}
   m_Layer: 5
   m_Name: UI 1
   m_TagString: Untagged
@@ -98,7 +99,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1821841196098662
 GameObject:
   m_ObjectHideFlags: 1
@@ -150,7 +151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1993708086432904
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,7 +169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &114020864034060328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -336,7 +337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a46b38128bfe0d4a9ae06fc413de5c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 4
   Background: {fileID: 114020864034060328}
   Bar: {fileID: 114184667689632584}
   BackgroundColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
@@ -353,7 +353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a46b38128bfe0d4a9ae06fc413de5c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 3
   Background: {fileID: 114830357761332224}
   Bar: {fileID: 114054880231087226}
   BackgroundColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
@@ -370,7 +369,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a46b38128bfe0d4a9ae06fc413de5c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 2
   Background: {fileID: 114731409262340716}
   Bar: {fileID: 114118708557536622}
   BackgroundColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
@@ -441,7 +439,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a46b38128bfe0d4a9ae06fc413de5c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 1
   Background: {fileID: 114714102254699176}
   Bar: {fileID: 114357627505540202}
   BackgroundColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
@@ -490,6 +487,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114912784955939736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1483167266624802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7aa615a694207419effce80600cdca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sanityBars:
+  - {fileID: 114812411228951904}
+  - {fileID: 114678988132119332}
+  - {fileID: 114474444356882148}
+  - {fileID: 114467771438083844}
 --- !u!222 &222114463076661862
 CanvasRenderer:
   m_ObjectHideFlags: 1
