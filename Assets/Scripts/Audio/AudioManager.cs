@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour {
 		audioSource = gameObject.GetComponent<AudioSource> ();
 		audioSource.loop = true;
 		audioSource.clip = backgroundMusic;
+		audioSource.pitch = 1.08f;
 		audioSource.Play ();
 	}
 
@@ -31,4 +32,17 @@ public class AudioManager : MonoBehaviour {
 		source.volume = Random.Range (.9f, 1.1f);
 		source.Play ();
 	}
+
+	public IEnumerator ChangeBackgroundPitch(float startPitch, float targetPitch, float fadeSpeed) 
+	{
+		float t = 0;
+		while (t < fadeSpeed) 
+		{
+			t += Time.deltaTime;
+			float blend = Mathf.Clamp01(t / fadeSpeed);
+			audioSource.pitch = Mathf.Lerp(startPitch, targetPitch, blend);
+			yield return null;
+		}
+	}
+
 }

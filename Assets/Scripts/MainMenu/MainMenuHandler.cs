@@ -9,6 +9,7 @@ public class MainMenuHandler : MonoBehaviour {
 	private static int MAXNUMBEROFJOYSTICKS = 8;
 
 	public GameObject[] PlayerImages;
+	public GameObject PressStartText;
 
 	private List<PlayerControllerData> Players = new List<PlayerControllerData>();
 
@@ -31,7 +32,7 @@ public class MainMenuHandler : MonoBehaviour {
 		}
 		if (Players.Count > 0)
 		{
-			if (Input.GetKeyDown(KeyCode.Space))
+			if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("JoyStart"))
 			{
 				StartGame();
 			}
@@ -94,6 +95,14 @@ public class MainMenuHandler : MonoBehaviour {
 			{
 				PlayerImages[i].SetActive(false);
 			}
+		}
+		if(Players.Count > 0)
+		{
+			PressStartText.SetActive(true);
+		}
+		else
+		{
+			PressStartText.SetActive(false);
 		}
 	} 
 
