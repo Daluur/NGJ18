@@ -1,11 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Linq;
 
 public class PlayerManager : Singleton<PlayerManager> {
 
     public List<GeneralPlayer> Players = new List<GeneralPlayer>();
-    
+
+    public const string scoreString = "Score: ";
+    public GameObject loseScreen;
+    public Text ScoreText, FinalScoreText;
+    [HideInInspector]
+    public int Score;
 
 	public Sprite[] PlayerSprites;
 
@@ -51,11 +58,25 @@ public class PlayerManager : Singleton<PlayerManager> {
 	// Use this for initialization
 	void Start () {
         StartCoroutine(IncreaseInsanityDepletion());
-	}
-	
+        gameStartTime = Time.timeSinceLevelLoad;
+    }
+
+    private float gameStartTime;
 	// Update is called once per frame
 	void Update () {
-		
+        if (Players.Count == 0 || Players.Any(p => !p.playerHealth.GetIsInsane()))
+        {
+            Score += (int)(Time.timeSinceLevelLoad - gameStartTime) * 10;
+            ScoreText.text = scoreString + Score;
+            return;
+        }
+        else {
+            Debug.Log("YOU LOST!!!!");
+            ScoreText.gameObject.SetActive(false);
+            FinalScoreText.text = scoreString + Score;
+            loseScreen.SetActive(true);
+            Time.timeScale = 0.0f;
+        }
 	}
 
     public IEnumerator IncreaseInsanityDepletion() {

@@ -171,6 +171,8 @@ MonoBehaviour:
   DeathAnim: {fileID: 1946258039018108, guid: 37bd8aedbe7ca274e88f3dc91e6cf1be, type: 2}
   Damage: 1
   SanityReward: 2
+  timeUsingDamageAnim: 0.5
+  anim: {fileID: 95922373038059666}
 --- !u!136 &136183913380600418
 CapsuleCollider:
   m_ObjectHideFlags: 1
