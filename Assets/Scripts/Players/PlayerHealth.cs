@@ -39,4 +39,10 @@ public class PlayerHealth : MonoBehaviour, IPlayer {
             }
         }
     }
+
+	public void TakeDamage(int amount, IPlayer player)
+	{
+		TakeDamage(amount);
+		player.TakeDamage(amount);
+	}
 }
