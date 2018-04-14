@@ -6,7 +6,20 @@ public class DeathAnimExplosion : MonoBehaviour {
 
     public ParticleSystem ps;
 
+	public AudioClip audioClip;
+
+	[HideInInspector]
+	public AudioManager audioManager;
+	private AudioSource audioScource;
+
+	void Awake()
+	{
+		audioScource = gameObject.GetComponent<AudioSource> ();
+		audioManager = GameObject.Find ("AudioManager").GetComponent<AudioManager> ();
+	} 
+
 	void Start () {
+		audioManager.PlaySound (audioScource, audioClip);
         StartCoroutine(KillAfterPSFinishes(ps.time));
         ps.Play();  	
 	}
