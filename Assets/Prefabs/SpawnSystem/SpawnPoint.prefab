@@ -49,7 +49,8 @@ AudioSource:
   m_GameObject: {fileID: 1717291609712996}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243916358098264986, guid: f83fc32bd416a40d8802b0e484239a79,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -137,4 +138,5 @@ MonoBehaviour:
   SpawnDelayForPS: 2
   spawnParticleSystem: {fileID: 0}
   audioManager: {fileID: 0}
-  spawnSound: {fileID: 8300000, guid: b2f46d65e2cf341e0ad234a29698f109, type: 3}
+  spawnBugSound: {fileID: 8300000, guid: b2f46d65e2cf341e0ad234a29698f109, type: 3}
+  spawnBossSound: {fileID: 8300000, guid: 51f4fa7417824494a8b5f935cdd70d0b, type: 3}

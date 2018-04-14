@@ -29,6 +29,7 @@ public class Spawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		IncreaseInSpawn = 0;
         if (FullRandomSpawn)
         {
             StartEnemySpawningOld();
@@ -123,7 +124,14 @@ public class Spawner : MonoBehaviour {
 
     public static void ActualSpawnEnemy(Vector3 spawnPos, List<GeneralPlayer> players, Enemy toSpawn = null, int amountToSpawn = 1)
 	{
-        for (int i = 0; i < amountToSpawn + Spawner.IncreaseInSpawn; i++)
+		var amountToSpawnWithIncrease = amountToSpawn + Spawner.IncreaseInSpawn;
+		if (!toSpawn.DieOnPlayerHit) // It is the boss.
+		{
+			// We make sure there can never spawn more than 1 boss at a time.
+			amountToSpawnWithIncrease = Mathf.Min(amountToSpawnWithIncrease, 1);
+		}
+
+		for (int i = 0; i < amountToSpawn + Spawner.IncreaseInSpawn; i++)
         {
             var go = Instantiate(toSpawn.gameObject, spawnPos, Quaternion.identity);
             go.GetComponent<EnemyMovement>().Players = players.Select(t => t.gameObject).ToArray();

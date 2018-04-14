@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour, IEnemy
     public GameObject DeathAnim;
     public int Damage = 15;
     public int SanityReward = 1;
+	public bool DieOnPlayerHit = true;
 	public Animator anim;
 
     public void TakeDamage(int amount, IPlayer player)
@@ -33,7 +34,10 @@ public class Enemy : MonoBehaviour, IEnemy
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<IPlayer>().TakeDamage(Damage);
-            DoDeath();
+			if (DieOnPlayerHit)
+			{
+				DoDeath();
+			}
         }
     }
 }

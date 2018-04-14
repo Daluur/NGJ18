@@ -10,7 +10,8 @@ public class SpawnPoint : MonoBehaviour {
     public ParticleSystem spawnParticleSystem;
 
 	public AudioManager audioManager;
-	public AudioClip spawnSound;
+	public AudioClip spawnBugSound;
+	public AudioClip spawnBossSound;
 	private AudioSource audioSource;
 
     private PlayerManager _playerManager;
@@ -34,18 +35,21 @@ public class SpawnPoint : MonoBehaviour {
 
     public void StartSpawnSequence() {
 		if (spawnParticleSystem != null) {
-			audioManager.PlaySound (audioSource, spawnSound);
 			spawnParticleSystem.Play ();
 		}
         StartCoroutine(ShowParticleSystemBeforeSpawn());
     }
 
     private IEnumerator ShowParticleSystemBeforeSpawn() {
-		audioManager.PlaySound (audioSource, spawnSound);
-        yield return new WaitForSeconds(SpawnDelayForPS);
         var idToSpawn = Random.Range(0, EnemiesItCanSpawn.Length);
         var enemyToSpawn = EnemiesItCanSpawn[idToSpawn];
-        var amountToSpawn = Random.Range(Ranges[idToSpawn].x, Ranges[idToSpawn].y);
+        var amountToSpawn = Random.Range(Ranges[idToSpawn].x, Ranges[idToSpawn].y + 1);
+		if (!enemyToSpawn.DieOnPlayerHit) { // Means it is the boss.
+			audioManager.PlaySound (audioSource, spawnBossSound);
+		} else {
+			audioManager.PlaySound (audioSource, spawnBugSound);
+		}
+		yield return new WaitForSeconds(SpawnDelayForPS);
         Spawner.ActualSpawnEnemy(gameObject.transform.position, PlayerManager.Players, enemyToSpawn, amountToSpawn);
     }
 }
