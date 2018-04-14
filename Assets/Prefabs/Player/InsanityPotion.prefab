@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 33554604151185028}
   - component: {fileID: 65768597334514738}
   - component: {fileID: 114053245386090418}
+  - component: {fileID: 111446319380037002}
   m_Layer: 8
   m_Name: InsanityPotion
   m_TagString: Potion
@@ -52,13 +53,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1317571478805952}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.4671602, y: 1.3241807e-17, z: -2.0872529}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_Children:
   - {fileID: 4704887185807926}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 30.000002, z: 0}
 --- !u!4 &4704887185807926
 Transform:
   m_ObjectHideFlags: 1
@@ -91,6 +92,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 1, z: 0.6}
   m_Center: {x: 0, y: 0, z: 0.03}
+--- !u!111 &111446319380037002
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1317571478805952}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 8d64b5a2400c94a4fa63d8a44d6580ed, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 8d64b5a2400c94a4fa63d8a44d6580ed, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &114053245386090418
 MonoBehaviour:
   m_ObjectHideFlags: 1
