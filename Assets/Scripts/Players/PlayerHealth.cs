@@ -46,6 +46,10 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
     public void RewardSanity(int amount)
     {
         Sanity += amount;
+		if (Sanity > MaxSanity)
+		{
+			Sanity = MaxSanity;
+		}
     }
 
     public void TakeDamage(int amount)
@@ -72,8 +76,11 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
 
 	public void TakeDamage(int amount, IPlayer player)
 	{
-		TakeDamage(amount);
-		player.TakeDamage(amount);
+		if (!GetIsInsane())
+		{
+			TakeDamage(amount / 2);
+			player.TakeDamage(amount / 2);
+		}
 	}
 
     private void StartBreakingSequence() {
