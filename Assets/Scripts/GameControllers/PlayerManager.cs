@@ -38,32 +38,30 @@ public class PlayerManager : Singleton<PlayerManager> {
 		{
 			// Game was started from scene.
 			// We only add keyboard support.
-			var playerObj = Instantiate(PlayerPrefab, PlayerSpawnPositions[0].position, Quaternion.identity);
-            playerObj.GetComponent<PlayerController>().Setup(new PlayerControllerData { ControllerID = 0, PlayerID = 1 }, PlayerSprites[0]);
-			var generalPlayer = playerObj.GetComponent<GeneralPlayer>();
-			Players.Add(generalPlayer);
-
-			var particles = Instantiate(PlayerMoveParticles, PlayerSpawnPositions[0].position, Quaternion.identity);
-			particles.GetComponent<FollowPlayer>().player = generalPlayer;
-			UIHandler.Instance.PlayerWasSpawned(playerObj.GetComponent<PlayerHealth>(), 1);
+			ActualSpawn(new PlayerControllerData { ControllerID = 0, PlayerID = 1 });
 		}
 		else
 		{
 			foreach (var player in players)
 			{
-				// Create each of the players.
-				var playerObj = Instantiate(PlayerPrefab, PlayerSpawnPositions[player.PlayerID - 1].position, Quaternion.identity);
-				playerObj.GetComponent<PlayerController>().Setup(player, PlayerSprites[player.PlayerID - 1]);
-
-				var generalPlayer = playerObj.GetComponent<GeneralPlayer>();
-				Players.Add(generalPlayer);
-
-				var particles = Instantiate(PlayerMoveParticles, PlayerSpawnPositions[player.PlayerID - 1].position, Quaternion.identity);
-				particles.GetComponent<FollowPlayer>().player = generalPlayer;
-
-				UIHandler.Instance.PlayerWasSpawned(playerObj.GetComponent<PlayerHealth>(), player.PlayerID);
+				ActualSpawn(player);
 			}
 		}
+	}
+
+	private void ActualSpawn(PlayerControllerData player) 
+	{
+		// Create each of the players.
+		var playerObj = Instantiate(PlayerPrefab, PlayerSpawnPositions[player.PlayerID - 1].position, Quaternion.identity);
+		playerObj.GetComponent<PlayerController>().Setup(player, PlayerSprites[player.PlayerID - 1]);
+
+		var generalPlayer = playerObj.GetComponent<GeneralPlayer>();
+		Players.Add(generalPlayer);
+
+		var particles = Instantiate(PlayerMoveParticles, PlayerSpawnPositions[player.PlayerID - 1].position, Quaternion.identity);
+		particles.GetComponent<FollowPlayer>().player = generalPlayer;
+
+		UIHandler.Instance.PlayerWasSpawned(playerObj.GetComponent<PlayerHealth>(), player.PlayerID);
 	}
 
 	// Use this for initialization
