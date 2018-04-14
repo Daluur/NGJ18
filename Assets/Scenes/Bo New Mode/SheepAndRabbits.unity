@@ -1105,6 +1105,11 @@ Prefab:
       propertyPath: FinalScoreText
       value: 
       objectReference: {fileID: 943905041}
+    - target: {fileID: 1514692114207618, guid: 3566828ada4206248a554b7a1ed4039a, type: 2}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000,
+        type: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3566828ada4206248a554b7a1ed4039a, type: 2}
   m_IsPrefabParent: 0
