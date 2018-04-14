@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
 	public PlayerShoot Gun;
 	public Rigidbody Body;
 	public NavMeshAgent Agent;
+	public SpriteRenderer Renderer;
 
 	public int controllerID = 0;
 	public int playerID = 0;
@@ -20,10 +21,11 @@ public class PlayerController : MonoBehaviour {
 	private string torsoYString;
 	private string shootString;
 	
-	public void Setup(PlayerControllerData data)
+	public void Setup(PlayerControllerData data, Sprite sprite)
 	{
 		controllerID = data.ControllerID;
 		playerID = data.PlayerID;
+		Renderer.sprite = sprite;
 		SetupInputVariables();
 	}
 

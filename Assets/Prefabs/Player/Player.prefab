@@ -176,6 +176,7 @@ MonoBehaviour:
   Gun: {fileID: 114378735040527690}
   Body: {fileID: 54993194503594920}
   Agent: {fileID: 195592958229042990}
+  Renderer: {fileID: 212771208918668196}
   controllerID: 0
   playerID: 0
 --- !u!114 &114378735040527690
@@ -190,7 +191,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletSpawnPosition: {fileID: 4033944034180566}
-  Bullet: {fileID: 1831538846754158, guid: ee813ed16b796fb418feeabae77184de, type: 2}
+  Bullets:
+  - {fileID: 1831538846754158, guid: ee813ed16b796fb418feeabae77184de, type: 2}
+  - {fileID: 1831538846754158, guid: 9dade632cd0e0cc4989dceb97de04d35, type: 2}
   playerHealth: {fileID: 114559562143642398}
   FireRate: 0.2
 --- !u!114 &114559562143642398
