@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour {
 		audioSource = gameObject.GetComponent<AudioSource> ();
 		audioSource.loop = true;
 		audioSource.clip = backgroundMusic;
+		audioSource.pitch = 1.08f;
 		audioSource.Play ();
 	}
 
@@ -31,4 +32,10 @@ public class AudioManager : MonoBehaviour {
 		source.volume = Random.Range (.9f, 1.1f);
 		source.Play ();
 	}
+
+	public void InsanitySound() 
+	{
+		
+	}
+
 }
