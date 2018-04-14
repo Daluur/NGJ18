@@ -33,8 +33,12 @@ public class Bullet : MonoBehaviour {
 			Destroy(gameObject);
 		} else if(other.tag == "Player")
 		{
-			other.GetComponent<IPlayer>().TakeDamage(Damage, player);
-			Destroy(gameObject);
+			var otherPlayer = other.GetComponent<IPlayer>();
+			if (otherPlayer != player)
+			{
+				otherPlayer.TakeDamage(Damage, player);
+				Destroy(gameObject);
+			}
 		}
 	}
 }
