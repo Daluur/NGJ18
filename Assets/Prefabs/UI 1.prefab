@@ -645,7 +645,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
-  anim: {fileID: 0}
+  anim: {fileID: 95586754250346360}
 --- !u!114 &114051750845112272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1142,7 +1142,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
-  anim: {fileID: 0}
+  anim: {fileID: 95412359042200546}
 --- !u!114 &114569806815094406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1348,7 +1348,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
-  anim: {fileID: 0}
+  anim: {fileID: 95372161972787978}
 --- !u!114 &114827737660753902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1484,7 +1484,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
-  anim: {fileID: 0}
+  anim: {fileID: 95933426966855828}
 --- !u!222 &222056550568777302
 CanvasRenderer:
   m_ObjectHideFlags: 1
