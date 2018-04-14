@@ -19,7 +19,6 @@ public class PlayerShoot : MonoBehaviour {
 
 	public AudioManager audioManager;
 	public AudioClip[] shootingSound;
-	public AudioClip laserSound;
 
 	private AudioSource audioSource;
 
@@ -38,9 +37,6 @@ public class PlayerShoot : MonoBehaviour {
 	{
         if (playerHealth.GodMode)
         {
-			if (!audioSource.isPlaying) {
-				audioManager.PlaySound (audioSource, laserSound, 1f, true);
-			}
             LaserCollider.gameObject.SetActive(true);
             RaycastHit hit;
             if(Physics.Raycast(BulletSpawnPosition.position, BulletSpawnPosition.forward, out hit, 1000f, LaserLayerMask))
