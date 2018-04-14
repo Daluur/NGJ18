@@ -44,9 +44,8 @@ public class SpawnPoint : MonoBehaviour {
         var idToSpawn = Random.Range(0, EnemiesItCanSpawn.Length);
         var enemyToSpawn = EnemiesItCanSpawn[idToSpawn];
         var amountToSpawn = Random.Range(Ranges[idToSpawn].x, Ranges[idToSpawn].y + 1);
-		if (enemyToSpawn.gameObject.name == "Enemy3") {
+		if (!enemyToSpawn.DieOnPlayerHit) { // Means it is the boss.
 			audioManager.PlaySound (audioSource, spawnBossSound);
-			amountToSpawn = Mathf.Min(amountToSpawn, 1);
 		} else {
 			audioManager.PlaySound (audioSource, spawnBugSound);
 		}
