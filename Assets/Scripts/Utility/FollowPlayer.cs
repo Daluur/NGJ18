@@ -31,6 +31,14 @@ public class FollowPlayer : MonoBehaviour {
 				// PlayerParticles.SetActive(false);
 			}
 		}
+		if(player.playerHealth.GetIsInsane())
+		{
+			MonsterParticles.SetActive(true);
+		}
+		else
+		{
+			MonsterParticles.SetActive(false);
+		}
 		transform.position = player.transform.position;
 	}
 }

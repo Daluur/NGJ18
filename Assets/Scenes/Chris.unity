@@ -565,7 +565,7 @@ Prefab:
     - target: {fileID: 114980978898274512, guid: d8df8f65577f7bc48a77d6d62fd7fe9e,
         type: 2}
       propertyPath: SpawnIntervalBetweenSequence
-      value: 3
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 114720749531773660, guid: d8df8f65577f7bc48a77d6d62fd7fe9e,
         type: 2}

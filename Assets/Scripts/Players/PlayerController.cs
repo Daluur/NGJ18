@@ -91,6 +91,7 @@ public class PlayerController : GeneralPlayer {
         }
         else
         {
+			transform.rotation = Quaternion.identity;
             Agent.enabled = false;
         }
 

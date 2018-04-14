@@ -158,6 +158,6 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
         yield return new WaitForSeconds(GodModeDuration);
         GodMode = false;
         PlayerShoot.LaserCollider.gameObject.SetActive(false);
-        Sanity = (int)(MaxSanity * 0.2f);
+        Sanity = (int)(MaxSanity * 0.3f);
     }
 }
