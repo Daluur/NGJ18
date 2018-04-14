@@ -11,6 +11,18 @@ public class Enemy : MonoBehaviour, IEnemy
 	public bool DieOnPlayerHit = true;
 	public Animator anim;
 
+	public AudioClip audioClip;
+
+	[HideInInspector]
+	public AudioManager audioManager;
+	private AudioSource audioScource;
+
+	void Awake()
+	{
+		audioScource = gameObject.GetComponent<AudioSource> ();
+		audioManager = GameObject.Find ("AudioManager").GetComponent<AudioManager> ();
+	} 
+
     public void TakeDamage(int amount, IPlayer player)
     {
         if (Health - amount <= 0)
@@ -33,6 +45,7 @@ public class Enemy : MonoBehaviour, IEnemy
     {
         if (collision.gameObject.tag == "Player")
         {
+			audioManager.PlaySound (audioScource, audioClip);
             collision.gameObject.GetComponent<IPlayer>().TakeDamage(Damage);
 			if (DieOnPlayerHit)
 			{
