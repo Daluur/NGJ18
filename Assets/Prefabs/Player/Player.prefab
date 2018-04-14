@@ -368,7 +368,7 @@ MonoBehaviour:
   LaserLayerMask:
     serializedVersion: 2
     m_Bits: 4294967039
-  LaserDamagerPerSecond: 40
+  LaserDamagerPerSecond: 10
   LaserCollider: {fileID: 136454629387653920}
   audioManager: {fileID: 0}
   shootingSound:

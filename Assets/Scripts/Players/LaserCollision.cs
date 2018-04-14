@@ -30,7 +30,7 @@ public class LaserCollision : MonoBehaviour {
     {
         if(other.tag == "Enemy")
         {
-            other.GetComponent<IEnemy>().TakeDamage(wholeNumberDmg, PlayerShoot.playerHealth);
+            other.GetComponent<IEnemy>().TakeDamage(wholeNumberDmg * 10, PlayerShoot.playerHealth);
         }
         if(other.tag == "Player" && other.gameObject != PlayerShoot.playerHealth.gameObject)
         {
