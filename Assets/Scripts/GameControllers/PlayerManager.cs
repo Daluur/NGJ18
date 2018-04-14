@@ -82,11 +82,10 @@ public class PlayerManager : Singleton<PlayerManager> {
             return;
         }
         else {
-            Debug.Log("YOU LOST!!!!");
             ScoreText.gameObject.SetActive(false);
             FinalScoreText.text = scoreString + Score;
             loseScreen.SetActive(true);
-            Time.timeScale = 0.0f;
+            //Time.timeScale = 0.0f;
         }
 	}
 

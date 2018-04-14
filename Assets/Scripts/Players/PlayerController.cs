@@ -16,9 +16,11 @@ public class PlayerController : GeneralPlayer {
     public IPlayer player;
     public float InsaneMovementInfluenceFactor = 0.3f;
 
-	public Rigidbody body;
 	public int controllerID = 0;
 	public int playerID = 0;
+
+	private bool isShooting;
+	public GameObject shootParticles;
 
 	private string moveXString;
 	private string moveYString;
@@ -90,7 +92,17 @@ public class PlayerController : GeneralPlayer {
 
 		if (Input.GetButton(shootString))
 		{
+			if(!isShooting)
+			{
+				isShooting = true;
+				shootParticles.SetActive(true);
+			}
 			Gun.Shoot();
+		}
+		else if(isShooting)
+		{
+			isShooting = false;
+			shootParticles.SetActive(false);
 		}
 	}
 }
