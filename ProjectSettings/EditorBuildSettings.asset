@@ -9,5 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: ed6dd577ab36b004fbcae2d3d5112e83
   - enabled: 1
-    path: Assets/Scenes/Chris.unity
-    guid: 4cc88432cd44bbc47b814c755e98159e
+    path: Assets/Scenes/Bo New Mode/SheepAndRabbits.unity
+    guid: 5f2f74d32513484478df5d274360b0a6
