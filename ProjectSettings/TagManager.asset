@@ -8,6 +8,8 @@ TagManager:
   - PlayerManager
   - Wall
   - Boundary
+  - Playermanager
+  - UIHandler
   layers:
   - Default
   - TransparentFX

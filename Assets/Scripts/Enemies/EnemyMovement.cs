@@ -9,6 +9,19 @@ public class EnemyMovement : MonoBehaviour {
     public GameObject targetedPlayer;
     public NavMeshAgent navAgent;
 
+    private PlayerManager _playerManager;
+    public PlayerManager PlayerManager
+    {
+        get
+        {
+            if (_playerManager == null)
+            {
+                _playerManager = GameObject.FindGameObjectWithTag("Playermanager").GetComponent<PlayerManager>();
+            }
+            return _playerManager;
+        }
+    }
+
     void Start () {
         if (navAgent == null)
             print("nav agent is not set on enemy");
@@ -17,7 +30,7 @@ public class EnemyMovement : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        targetedPlayer = SharedMovement.SelectEnemy(gameObject);
+        targetedPlayer = SharedMovement.SelectEnemy(gameObject, PlayerManager.Players);
         navAgent.SetDestination(targetedPlayer.transform.position);
     }    
 }

@@ -25,7 +25,7 @@ public class MainMenuHandler : MonoBehaviour {
 	void Update () {
 		for (int i = 1; i <= MAXNUMBEROFJOYSTICKS; i++)
 		{
-			if (Input.GetButtonDown("Joy" + i + "Shoot")) {
+			if (Input.GetButtonDown("Joy" + i + "Shoot") || Input.GetKeyDown(KeyCode.Space)) {
 				GotInput(i);
 			}
 		}

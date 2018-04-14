@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIHandler : Singleton<UIHandler> {
+public class UIHandler : MonoBehaviour {
 
 	public SanityBar[] sanityBars;
 
@@ -10,4 +10,9 @@ public class UIHandler : Singleton<UIHandler> {
 	{
 		sanityBars[playerID - 1].AssignPlayer(player);
 	}
+
+    public void OnDestroy()
+    {
+        StopAllCoroutines();
+    }
 }

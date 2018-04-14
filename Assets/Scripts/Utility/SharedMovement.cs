@@ -4,9 +4,9 @@ using UnityEngine;
 using System.Linq;
 
 public class SharedMovement : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
+    
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -14,9 +14,9 @@ public class SharedMovement : MonoBehaviour {
 	void Update () {
 		
 	}
-    public static GameObject SelectEnemy(GameObject mover)
+    public static GameObject SelectEnemy(GameObject mover, List<GeneralPlayer> Players)
     {
-        var targets = PlayerManager.Instance.Players;
+        var targets = Players;
         var enemyPos = new Vector2(mover.transform.position.x, mover.transform.position.z);
         float closesDist = float.MaxValue, dist;
         GameObject closestPlayer = targets[0].gameObject;

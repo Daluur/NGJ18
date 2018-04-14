@@ -18,6 +18,19 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
 
     public float InsanityStartTime;
 
+    private PlayerManager _playerManager;
+    public PlayerManager PlayerManager
+    {
+        get
+        {
+            if (_playerManager == null)
+            {
+                _playerManager = GameObject.FindGameObjectWithTag("Playermanager").GetComponent<PlayerManager>();
+            }
+            return _playerManager;
+        }
+    }
+
     public void RewardSanity(int amount)
     {
         Sanity += amount;
@@ -40,8 +53,8 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
 
     private IEnumerator DepleteSanity() {
         while (true) {
-            yield return new WaitForSeconds(PlayerManager.Instance.DepleteInterval);
-            TakeDamage(PlayerManager.Instance.DepletePerTick);
+            yield return new WaitForSeconds(PlayerManager.DepleteInterval);
+            TakeDamage(PlayerManager.DepletePerTick);
         }
     }
 
@@ -87,5 +100,10 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
                 this.TakeDamage(InsanityDamage);
             }
         }
+    }
+
+    public void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }

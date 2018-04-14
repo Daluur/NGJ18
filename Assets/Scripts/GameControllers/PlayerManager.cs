@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-public class PlayerManager : Singleton<PlayerManager> {
+public class PlayerManager : MonoBehaviour {
 
     public List<GeneralPlayer> Players = new List<GeneralPlayer>();
 
@@ -25,6 +25,17 @@ public class PlayerManager : Singleton<PlayerManager> {
     public int DepleteIncreaseInterval = 60;
 
     public float DepleteInterval = 1;
+
+    private UIHandler _UIHandler;
+    public UIHandler UIHandler {
+    get {
+            if(_UIHandler == null)
+            {
+                _UIHandler = GameObject.FindGameObjectWithTag("UIHandler").GetComponent<UIHandler>();
+            }
+            return _UIHandler;
+        }
+    }
 
 	private void Awake()
 	{
@@ -61,7 +72,7 @@ public class PlayerManager : Singleton<PlayerManager> {
 		var particles = Instantiate(PlayerMoveParticles, PlayerSpawnPositions[player.PlayerID - 1].position, Quaternion.identity);
 		particles.GetComponent<FollowPlayer>().player = generalPlayer;
 
-		UIHandler.Instance.PlayerWasSpawned(playerObj.GetComponent<PlayerHealth>(), player.PlayerID);
+        UIHandler.PlayerWasSpawned(playerObj.GetComponent<PlayerHealth>(), player.PlayerID);
 	}
 
 	// Use this for initialization
@@ -95,5 +106,10 @@ public class PlayerManager : Singleton<PlayerManager> {
             if (DepletePerTick == MaxDepletePerSecond)
                 break;
         }
+    }
+
+    public void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }

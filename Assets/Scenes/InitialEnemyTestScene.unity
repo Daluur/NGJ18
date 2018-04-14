@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -423,34 +423,6 @@ Prefab:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 1533452212494550, guid: 3da9c8887a9f0984f9d3ff9e2fe5502f, type: 2}
-      propertyPath: m_Name
-      value: FinalScore
-      objectReference: {fileID: 0}
-    - target: {fileID: 114223127060821046, guid: 3da9c8887a9f0984f9d3ff9e2fe5502f,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 0.659
-      objectReference: {fileID: 0}
-    - target: {fileID: 114223127060821046, guid: 3da9c8887a9f0984f9d3ff9e2fe5502f,
-        type: 2}
-      propertyPath: m_Color.g
-      value: 0.023031998
-      objectReference: {fileID: 0}
-    - target: {fileID: 114223127060821046, guid: 3da9c8887a9f0984f9d3ff9e2fe5502f,
-        type: 2}
-      propertyPath: m_Color.b
-      value: 0.023031998
-      objectReference: {fileID: 0}
-    - target: {fileID: 114223127060821046, guid: 3da9c8887a9f0984f9d3ff9e2fe5502f,
-        type: 2}
-      propertyPath: m_Text
-      value: 'YOU LOSE!!!
-
-        Press enter to go to main menu
-
-        Press space to try again!'
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3da9c8887a9f0984f9d3ff9e2fe5502f, type: 2}
   m_IsPrefabParent: 0
@@ -816,17 +788,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1840828264829598, guid: 3da9c8887a9f0984f9d3ff9e2fe5502f,
     type: 2}
   m_PrefabInternal: {fileID: 766964737}
---- !u!114 &1587032748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1587032744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ce39a53b48c32041b2882a0408303e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1837722174
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,11 +915,6 @@ Prefab:
       objectReference: {fileID: 1587032744}
     - target: {fileID: 114822794484463512, guid: 21cc17cc578318142bfcad38a4be180d,
         type: 2}
-      propertyPath: score
-      value: 
-      objectReference: {fileID: 458152990}
-    - target: {fileID: 114822794484463512, guid: 21cc17cc578318142bfcad38a4be180d,
-        type: 2}
       propertyPath: ScoreText
       value: 
       objectReference: {fileID: 458152990}
@@ -967,21 +923,6 @@ Prefab:
       propertyPath: FinalScoreText
       value: 
       objectReference: {fileID: 390433791}
-    - target: {fileID: 114822794484463512, guid: 21cc17cc578318142bfcad38a4be180d,
-        type: 2}
-      propertyPath: PlayerMoveParticles
-      value: 
-      objectReference: {fileID: 1711648859386306, guid: 397f0aa5ad7ee4f4a87b43b3be783d3d,
-        type: 2}
-    - target: {fileID: 114822794484463512, guid: 21cc17cc578318142bfcad38a4be180d,
-        type: 2}
-      propertyPath: DepletePerTick
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4274803867630464, guid: 21cc17cc578318142bfcad38a4be180d, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -8.19
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 21cc17cc578318142bfcad38a4be180d, type: 2}
   m_IsPrefabParent: 0

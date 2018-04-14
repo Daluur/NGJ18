@@ -27,8 +27,21 @@ public class PlayerController : GeneralPlayer {
 	private string torsoXString;
 	private string torsoYString;
 	private string shootString;
-	
-	public void Setup(PlayerControllerData data, Sprite sprite)
+
+    private PlayerManager _playerManager;
+    public PlayerManager PlayerManager
+    {
+        get
+        {
+            if (_playerManager == null)
+            {
+                _playerManager = GameObject.FindGameObjectWithTag("Playermanager").GetComponent<PlayerManager>();
+            }
+            return _playerManager;
+        }
+    }
+
+    public void Setup(PlayerControllerData data, Sprite sprite)
 	{
 		controllerID = data.ControllerID;
 		playerID = data.PlayerID;
@@ -71,7 +84,7 @@ public class PlayerController : GeneralPlayer {
         {
             gameObject.transform.position += new Vector3(xAxis, 0, yAxis) * InsaneMovementInfluenceFactor;
             Agent.enabled = true;
-            var targetedPlayer = SharedMovement.SelectEnemy(gameObject);
+            var targetedPlayer = SharedMovement.SelectEnemy(gameObject, PlayerManager.Players);
             Agent.SetDestination(targetedPlayer.gameObject.transform.position);
             return;
         }

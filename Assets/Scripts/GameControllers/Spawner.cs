@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Spawner : Singleton<Spawner> {
+public class Spawner : MonoBehaviour {
 
     public float SpawnIntervalOld = 1;
     public float SpawnIntervalDecreaseOld = 0.05f;
@@ -13,7 +13,7 @@ public class Spawner : Singleton<Spawner> {
     public float SpawnIntervalDecreaseSequence = 0.05f;
     public float TimeBeforeSpawnIntervalDecreasesSequence = 30f;
 
-    public int IncreaseInSpawn = 0;
+    public static int IncreaseInSpawn = 0;
     public float TimeBeforeSpawnIncreases = 60f;
 
     public SpawnGroup[] SpawnGroups;
@@ -121,14 +121,18 @@ public class Spawner : Singleton<Spawner> {
         }
     }
 
-    public static void ActualSpawnEnemy(Vector3 spawnPos, Enemy toSpawn = null, int amountToSpawn = 1)
+    public static void ActualSpawnEnemy(Vector3 spawnPos, List<GeneralPlayer> players, Enemy toSpawn = null, int amountToSpawn = 1)
 	{
-        for (int i = 0; i < amountToSpawn + Spawner.Instance.IncreaseInSpawn; i++)
+        for (int i = 0; i < amountToSpawn + Spawner.IncreaseInSpawn; i++)
         {
             var go = Instantiate(toSpawn.gameObject, spawnPos, Quaternion.identity);
-            go.GetComponent<EnemyMovement>().Players = PlayerManager.Instance.Players.Select(t => t.gameObject).ToArray();
+            go.GetComponent<EnemyMovement>().Players = players.Select(t => t.gameObject).ToArray();
         }
     }
 
+    public void OnDestroy()
+    {
+        StopAllCoroutines();
+    }
 
 }
