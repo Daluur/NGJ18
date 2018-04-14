@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 135413301701903412}
   - component: {fileID: 23483081222489588}
   - component: {fileID: 114608286673636270}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4133733207426248}
   - component: {fileID: 212717966987693038}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
