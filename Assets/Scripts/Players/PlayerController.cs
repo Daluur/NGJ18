@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : GeneralPlayer {
 
 	public float MoveSpeed = 3;
 	public Transform GunModel;
@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour {
 	public NavMeshAgent Agent;
 
     public IPlayer player;
+    public float InsaneMovementInfluenceFactor = 0.3f;
 
 	public Rigidbody body;
 	public int controllerID = 0;
@@ -54,14 +55,26 @@ public class PlayerController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (player.GetIsInsane())
+        if (playerHealth.InsaneConversionAnimPlaying)
         {
-            //TODO: Do the custom input thing that should happen when insane
             return;
         }
 
-		var xAxis = Input.GetAxis(moveXString) * MoveSpeed * Time.deltaTime;
-		var yAxis = Input.GetAxis(moveYString) * MoveSpeed * Time.deltaTime;
+        var xAxis = Input.GetAxis(moveXString) * MoveSpeed * Time.deltaTime;
+        var yAxis = Input.GetAxis(moveYString) * MoveSpeed * Time.deltaTime;
+
+        if (player.GetIsInsane())
+        {
+            gameObject.transform.position += new Vector3(xAxis, 0, yAxis) * InsaneMovementInfluenceFactor;
+            Agent.enabled = true;
+            var targetedPlayer = SharedMovement.SelectEnemy(gameObject);
+            Agent.SetDestination(targetedPlayer.gameObject.transform.position);
+            return;
+        }
+        else
+        {
+            Agent.enabled = false;
+        }
 
 		Body.MovePosition(transform.position + new Vector3(xAxis, 0, yAxis));
 
