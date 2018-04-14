@@ -56,7 +56,6 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
         if (Sanity + amount >= MaxSanity) {
             Sanity = MaxSanity;
             if (!GodMode) { 
-                GodMode = true;
                 StartCoroutine(GodModeTimer());
             }
 
@@ -155,8 +154,11 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
     }
 
     private IEnumerator GodModeTimer() {
+        GodMode = true;
+        anim.SetTrigger("EnterGodMode");
         yield return new WaitForSeconds(GodModeDuration);
         GodMode = false;
+        anim.SetTrigger("ExitGodMode");
         PlayerShoot.LaserCollider.gameObject.SetActive(false);
         Sanity = (int)(MaxSanity * 0.3f);
     }
