@@ -131,7 +131,7 @@ public class Spawner : MonoBehaviour {
 			amountToSpawnWithIncrease = Mathf.Min(amountToSpawnWithIncrease, 1);
 		}
 
-		for (int i = 0; i < amountToSpawn + Spawner.IncreaseInSpawn; i++)
+		for (int i = 0; i < amountToSpawn; i++)
         {
             var go = Instantiate(toSpawn.gameObject, spawnPos, Quaternion.identity);
             go.GetComponent<EnemyMovement>().Players = players.Select(t => t.gameObject).ToArray();
