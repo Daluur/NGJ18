@@ -5,10 +5,17 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour {
 
 	public Transform BulletSpawnPosition;
-	public GameObject Bullet;
+	public GameObject[] Bullets;
     public PlayerHealth playerHealth;
 	public float FireRate = 0.3f;
 	private float timeSinceLastFire = Mathf.Infinity;
+	private int lastBulletTypeFired = 0;
+	private int amountOfBullets;
+
+	private void Start()
+	{
+		amountOfBullets = Bullets.Length - 1;
+	}
 
 	public void Shoot()
 	{
@@ -18,10 +25,14 @@ public class PlayerShoot : MonoBehaviour {
 		}
 		timeSinceLastFire = 0;
 
-		var bullet = Instantiate(Bullet, BulletSpawnPosition.position, transform.rotation);
+		var bullet = Instantiate(Bullets[lastBulletTypeFired++], BulletSpawnPosition.position, transform.rotation);
 		var direction = BulletSpawnPosition.forward;
 		direction.y = 0;
 		bullet.GetComponent<Bullet>().Setup(direction, playerHealth);
+		if(lastBulletTypeFired > amountOfBullets)
+		{
+			lastBulletTypeFired = 0;
+		}
 	}
 
 	private void Update()

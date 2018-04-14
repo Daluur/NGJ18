@@ -11,6 +11,7 @@ public class PlayerController : GeneralPlayer {
 
 	public Rigidbody Body;
 	public NavMeshAgent Agent;
+	public SpriteRenderer Renderer;
 
     public IPlayer player;
     public float InsaneMovementInfluenceFactor = 0.3f;
@@ -25,10 +26,11 @@ public class PlayerController : GeneralPlayer {
 	private string torsoYString;
 	private string shootString;
 	
-	public void Setup(PlayerControllerData data)
+	public void Setup(PlayerControllerData data, Sprite sprite)
 	{
 		controllerID = data.ControllerID;
 		playerID = data.PlayerID;
+		Renderer.sprite = sprite;
 		SetupInputVariables();
         player = gameObject.GetComponent<IPlayer>();
 	}
