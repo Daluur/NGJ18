@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour {
 
     public List<GeneralPlayer> Players = new List<GeneralPlayer>();
 
-    public const string scoreString = "Score: ";
+    public const string scoreString = "";
     public GameObject loseScreen;
     public Text ScoreText, FinalScoreText;
     [HideInInspector]
