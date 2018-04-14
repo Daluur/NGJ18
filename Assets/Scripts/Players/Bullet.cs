@@ -7,9 +7,11 @@ public class Bullet : MonoBehaviour {
 	public float Speed = 8;
 	public int Damage = 10;
 	private Vector3 direction;
+    private IPlayer player;
 
-	public void Setup(Vector3 dir)
+	public void Setup(Vector3 dir, IPlayer player)
 	{
+        this.player = player;
 		direction = dir * Speed;
 	}
 
@@ -22,7 +24,7 @@ public class Bullet : MonoBehaviour {
 	{
 		if(other.tag == "Enemy")
 		{
-			other.GetComponent<IEnemy>().TakeDamage(Damage);
+			other.GetComponent<IEnemy>().TakeDamage(Damage, player);
 			Destroy(gameObject);
 		}
 	}

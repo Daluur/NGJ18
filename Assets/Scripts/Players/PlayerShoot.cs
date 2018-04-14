@@ -6,12 +6,13 @@ public class PlayerShoot : MonoBehaviour {
 
 	public Transform BulletSpawnPosition;
 	public GameObject Bullet;
+    public PlayerHealth playerHealth;
 
 	public void Shoot()
 	{
 		var bullet = Instantiate(Bullet, BulletSpawnPosition.position, transform.rotation);
 		var direction = BulletSpawnPosition.forward;
 		direction.y = 0;
-		bullet.GetComponent<Bullet>().Setup(direction);
+		bullet.GetComponent<Bullet>().Setup(direction, playerHealth);
 	}
 }
