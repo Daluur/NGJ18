@@ -9,7 +9,7 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
     public int Sanity = 50;
     [HideInInspector]
     public bool IsInsane = false;
-    [HideInInspector]
+	[HideInInspector]
     public bool InsaneConversionAnimPlaying;
     public float BreakingAnimTimeStart = 1f, BreakingAnimTimeEnd = 1f;
     public float BreakDuration = 10f;
@@ -46,6 +46,10 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
     public void RewardSanity(int amount)
     {
         Sanity += amount;
+		if (Sanity > MaxSanity)
+		{
+			Sanity = MaxSanity;
+		}
     }
 
     public void TakeDamage(int amount)
@@ -72,8 +76,11 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
 
 	public void TakeDamage(int amount, IPlayer player)
 	{
-		TakeDamage(amount);
-		player.TakeDamage(amount);
+		if (!GetIsInsane())
+		{
+			TakeDamage(amount / 2);
+			player.TakeDamage(amount / 2);
+		}
 	}
 
     private void StartBreakingSequence() {
@@ -107,12 +114,17 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
         return IsInsane;
     }
 
-    public void OnCollisionEnter(Collision collision)
+	public bool GetIsBreaking()
+	{
+		return InsaneConversionAnimPlaying;
+	}
+
+	public void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Player")
         {
             var otherPlayer = collision.gameObject.GetComponent<IPlayer>();
-            if (otherPlayer.GetIsInsane()) {
+            if (otherPlayer.GetIsInsane() && !otherPlayer.GetIsBreaking()) {
                 this.TakeDamage(InsanityDamage);
             }
         }
