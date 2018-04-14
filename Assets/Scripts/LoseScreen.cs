@@ -17,6 +17,14 @@ public class LoseScreen : MonoBehaviour {
 			Time.timeScale = 1f;
 			var numberOfLevels = SceneManager.sceneCountInBuildSettings - 2; // We do not count main menu or credits.
 			var levelToLoad = Random.Range(1, numberOfLevels + 1);
+			if (numberOfLevels > 1 && levelToLoad == SceneManager.GetActiveScene().buildIndex)
+			{
+				levelToLoad = Random.Range(1, numberOfLevels + 1);
+				if (numberOfLevels > 1 && levelToLoad == SceneManager.GetActiveScene().buildIndex)
+				{
+					levelToLoad = Random.Range(1, numberOfLevels + 1);
+				}
+			}
 			SceneManager.LoadScene(levelToLoad);
 		}
 	}
