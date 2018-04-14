@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerManager : Singleton<PlayerManager> {
 
-    public List<GameObject> Players = new List<GameObject>();
+    public List<GeneralPlayer> Players = new List<GeneralPlayer>();
+    
 
 	public Sprite[] PlayerSprites;
 
@@ -30,8 +31,8 @@ public class PlayerManager : Singleton<PlayerManager> {
 			// Game was started from scene.
 			// We only add keyboard support.
 			var playerObj = Instantiate(PlayerPrefab, PlayerSpawnPositions[0].position, Quaternion.identity);
-			playerObj.GetComponent<PlayerController>().Setup(new PlayerControllerData { ControllerID = 0, PlayerID = 1}, PlayerSprites[0]);
-			Players.Add(playerObj);
+            playerObj.GetComponent<PlayerController>().Setup(new PlayerControllerData { ControllerID = 0, PlayerID = 1 }, PlayerSprites[0]);
+            Players.Add(playerObj.GetComponent<GeneralPlayer>());
 			UIHandler.Instance.PlayerWasSpawned(playerObj.GetComponent<PlayerHealth>(), 1);
 		}
 		else
@@ -41,7 +42,7 @@ public class PlayerManager : Singleton<PlayerManager> {
 				// Create each of the players.
 				var playerObj = Instantiate(PlayerPrefab, PlayerSpawnPositions[player.PlayerID - 1].position, Quaternion.identity);
 				playerObj.GetComponent<PlayerController>().Setup(player, PlayerSprites[player.PlayerID - 1]);
-				Players.Add(playerObj);
+                Players.Add(playerObj.GetComponent<GeneralPlayer>());
 				UIHandler.Instance.PlayerWasSpawned(playerObj.GetComponent<PlayerHealth>(), player.PlayerID);
 			}
 		}

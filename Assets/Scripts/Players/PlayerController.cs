@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : GeneralPlayer {
 
 	public float MoveSpeed = 3;
 	public Transform GunModel;
 	public PlayerShoot Gun;
+
 	public Rigidbody Body;
 	public NavMeshAgent Agent;
 	public SpriteRenderer Renderer;
 
+    public IPlayer player;
+    public float InsaneMovementInfluenceFactor = 0.3f;
+
+	public Rigidbody body;
 	public int controllerID = 0;
 	public int playerID = 0;
 
@@ -27,6 +32,7 @@ public class PlayerController : MonoBehaviour {
 		playerID = data.PlayerID;
 		Renderer.sprite = sprite;
 		SetupInputVariables();
+        player = gameObject.GetComponent<IPlayer>();
 	}
 
 	private void SetupInputVariables()
@@ -51,8 +57,26 @@ public class PlayerController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		var xAxis = Input.GetAxis(moveXString) * MoveSpeed * Time.deltaTime;
-		var yAxis = Input.GetAxis(moveYString) * MoveSpeed * Time.deltaTime;
+        if (playerHealth.InsaneConversionAnimPlaying)
+        {
+            return;
+        }
+
+        var xAxis = Input.GetAxis(moveXString) * MoveSpeed * Time.deltaTime;
+        var yAxis = Input.GetAxis(moveYString) * MoveSpeed * Time.deltaTime;
+
+        if (player.GetIsInsane())
+        {
+            gameObject.transform.position += new Vector3(xAxis, 0, yAxis) * InsaneMovementInfluenceFactor;
+            Agent.enabled = true;
+            var targetedPlayer = SharedMovement.SelectEnemy(gameObject);
+            Agent.SetDestination(targetedPlayer.gameObject.transform.position);
+            return;
+        }
+        else
+        {
+            Agent.enabled = false;
+        }
 
 		Body.MovePosition(transform.position + new Vector3(xAxis, 0, yAxis));
 

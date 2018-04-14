@@ -17,24 +17,7 @@ public class EnemyMovement : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        SelecteEnemy();
+        targetedPlayer = SharedMovement.SelectEnemy(gameObject);
         navAgent.SetDestination(targetedPlayer.transform.position);
-    }
-
-    private void SelecteEnemy() {
-        var enemyPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.z);
-        float closesDist = float.MaxValue, dist;
-        GameObject closestPlayer = Players[0];
-        foreach (var player in Players)
-        {
-            dist = Vector2.Distance(enemyPos, new Vector2(player.transform.position.x, player.transform.position.z));
-            if (Mathf.Abs(dist) < closesDist)
-            {
-                closestPlayer = player;
-                closesDist = dist;
-            }
-        }
-        targetedPlayer = closestPlayer;
-    }
-    
+    }    
 }
