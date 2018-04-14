@@ -18,6 +18,18 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
 
     public float InsanityStartTime;
 
+	public AudioManager audioManager;
+	public AudioClip insanitySound;
+
+	private AudioSource audioSource;
+
+	void Awake() 
+	{
+		audioSource = gameObject.GetComponent<AudioSource> ();
+		audioManager = GameObject.Find ("AudioManager").GetComponent<AudioManager> ();
+	} 
+
+
     public void RewardSanity(int amount)
     {
         Sanity += amount;
@@ -56,6 +68,8 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
             return;
         IsInsane = true;
         Debug.Log("IsInsane");
+		audioManager.PlaySound (audioSource, insanitySound);
+		StartCoroutine(audioManager.ChangeBackgroundPitch(1.08f, 1.4f, 2f));
         StartCoroutine(BreakingSequence());
     }
 
@@ -69,6 +83,7 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
         InsaneConversionAnimPlaying = true;
         yield return new WaitForSeconds(BreakingAnimTimeEnd);
         InsaneConversionAnimPlaying = false;
+		StartCoroutine(audioManager.ChangeBackgroundPitch(1.4f, 1.08f, 3f));
         IsInsane = false;
         Sanity = (int)(MaxSanity * 0.2f);
     }
