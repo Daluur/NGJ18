@@ -11,10 +11,10 @@ public class Spawner : MonoBehaviour {
 
     public float SpawnIntervalBetweenSequence = 1f;
     public float SpawnIntervalDecreaseSequence = 0.05f;
-    public float TimeBeforeSpawnIntervalDecreasesSequence = 30f;
+    float TimeBeforeSpawnIntervalDecreasesSequence = 20f;
 
     public static int IncreaseInSpawn = 0;
-    public float TimeBeforeSpawnIncreases = 60f;
+    float TimeBeforeSpawnIncreases = 45f;
 
     public SpawnGroup[] SpawnGroups;
     public GameObject EnemyPrefab;
@@ -72,7 +72,11 @@ public class Spawner : MonoBehaviour {
                 {
                     foreach(var spawnPoint in SequenceToSpawnFrom)
                     {
-                        sp.Spawn();
+						if (spawnPoint == null)
+						{
+							continue;
+						}
+                        spawnPoint.Spawn();
                     }
                 }
                 else
