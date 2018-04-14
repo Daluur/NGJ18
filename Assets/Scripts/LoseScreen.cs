@@ -9,10 +9,12 @@ public class LoseScreen : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Return))
 		{
+			Time.timeScale = 1f;
 			SceneManager.LoadScene(0);
 		}
 		else if (Input.GetKeyDown(KeyCode.Space))
 		{
+			Time.timeScale = 1f;
 			SceneManager.LoadScene(1);
 		}
 	}
