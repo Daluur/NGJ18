@@ -12,6 +12,17 @@ public class PlayerShoot : MonoBehaviour {
 	private int lastBulletTypeFired = 0;
 	private int amountOfBullets;
 
+	public AudioManager audioManager;
+	public AudioClip[] shootingSound;
+
+	private AudioSource audioSource;
+
+	void Awake() 
+	{
+		audioSource = gameObject.GetComponent<AudioSource> ();
+		audioManager = GameObject.Find ("AudioManager").GetComponent<AudioManager> ();
+	} 
+
 	private void Start()
 	{
 		amountOfBullets = Bullets.Length - 1;
@@ -29,6 +40,7 @@ public class PlayerShoot : MonoBehaviour {
 		var direction = BulletSpawnPosition.forward;
 		direction.y = 0;
 		bullet.GetComponent<Bullet>().Setup(direction, playerHealth);
+		audioManager.PlayRandomSound (audioSource, shootingSound); 
 		if(lastBulletTypeFired > amountOfBullets)
 		{
 			lastBulletTypeFired = 0;
