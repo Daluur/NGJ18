@@ -37,6 +37,7 @@ public class PlayerShoot : MonoBehaviour {
 	{
         if (playerHealth.GodMode)
         {
+            LaserCollider.gameObject.SetActive(true);
             RaycastHit hit;
             if(Physics.Raycast(BulletSpawnPosition.position, BulletSpawnPosition.forward, out hit, 1000f, LaserLayerMask))
             {
@@ -72,6 +73,11 @@ public class PlayerShoot : MonoBehaviour {
 
 	private void Update()
 	{
-		timeSinceLastFire += Time.deltaTime;
+        if (!playerHealth.playerController.isShooting)
+        {
+            LaserCollider.gameObject.SetActive(false);
+            return;
+        }
+        timeSinceLastFire += Time.deltaTime;
 	}
 }

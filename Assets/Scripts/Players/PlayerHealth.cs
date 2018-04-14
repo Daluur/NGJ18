@@ -22,6 +22,8 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
 
     public float InsanityStartTime;
 
+    public PlayerShoot PlayerShoot;
+
     private PlayerManager _playerManager;
     public PlayerManager PlayerManager
     {
@@ -42,6 +44,7 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
 
 	void Awake() 
 	{
+        base.Awake();
 		audioSource = gameObject.GetComponent<AudioSource> ();
 		audioManager = GameObject.Find ("AudioManager").GetComponent<AudioManager> ();
 	} 
@@ -154,6 +157,7 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
     private IEnumerator GodModeTimer() {
         yield return new WaitForSeconds(GodModeDuration);
         GodMode = false;
+        PlayerShoot.LaserCollider.gameObject.SetActive(false);
         Sanity = (int)(MaxSanity * 0.2f);
     }
 }

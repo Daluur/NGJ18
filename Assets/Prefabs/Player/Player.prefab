@@ -28,7 +28,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1429738771100396
 GameObject:
   m_ObjectHideFlags: 1
@@ -388,7 +388,7 @@ MonoBehaviour:
   playerHealth: {fileID: 0}
   playerController: {fileID: 0}
   MaxSanity: 100
-  Sanity: 50
+  Sanity: 95
   IsInsane: 0
   InsaneConversionAnimPlaying: 0
   BreakingAnimTimeStart: 1
@@ -398,9 +398,10 @@ MonoBehaviour:
     type: 2}
   InsanityDamage: 120
   anim: {fileID: 95546583840463724}
-  GodModeDuration: 0
+  GodModeDuration: 5
   GodMode: 0
   InsanityStartTime: 0
+  PlayerShoot: {fileID: 114378735040527690}
   audioManager: {fileID: 0}
   insanitySound: {fileID: 8300000, guid: e4870e44de5eb4c118dbd8b93c47e65d, type: 3}
 --- !u!114 &114932521369057716

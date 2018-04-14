@@ -7,7 +7,7 @@ public class GeneralPlayer : MonoBehaviour
     public PlayerHealth playerHealth;
     public PlayerController playerController;
 
-    private void Awake()
+    public void Awake()
     {
         playerHealth = gameObject.GetComponent<PlayerHealth>();
         playerController = gameObject.GetComponent<PlayerController>();
