@@ -21,7 +21,7 @@ public class DeathAnimExplosion : MonoBehaviour {
 	void Start () {
 		if (audioClip != null)
 		{
-			audioManager.PlaySound(audioScource, audioClip);
+			audioManager.PlaySound(audioScource, audioClip, 1f, true);
 		}
         StartCoroutine(KillAfterPSFinishes(ps.main.duration));
         ps.Play();  	

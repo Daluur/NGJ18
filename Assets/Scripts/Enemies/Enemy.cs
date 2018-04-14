@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour, IEnemy
     {
         if (collision.gameObject.tag == "Player")
         {
-			audioManager.PlaySound (audioScource, audioClip);
+			audioManager.PlaySound (audioScource, audioClip, 1f, true);
             collision.gameObject.GetComponent<IPlayer>().TakeDamage(Damage);
 			if (DieOnPlayerHit)
 			{
