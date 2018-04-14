@@ -43,9 +43,10 @@ public class SpawnPoint : MonoBehaviour {
     private IEnumerator ShowParticleSystemBeforeSpawn() {
         var idToSpawn = Random.Range(0, EnemiesItCanSpawn.Length);
         var enemyToSpawn = EnemiesItCanSpawn[idToSpawn];
-        var amountToSpawn = Random.Range(Ranges[idToSpawn].x, Ranges[idToSpawn].y);
+        var amountToSpawn = Random.Range(Ranges[idToSpawn].x, Ranges[idToSpawn].y + 1);
 		if (enemyToSpawn.gameObject.name == "Enemy3") {
 			audioManager.PlaySound (audioSource, spawnBossSound);
+			amountToSpawn = Mathf.Min(amountToSpawn, 1);
 		} else {
 			audioManager.PlaySound (audioSource, spawnBugSound);
 		}

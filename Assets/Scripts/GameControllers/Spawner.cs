@@ -29,6 +29,7 @@ public class Spawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		IncreaseInSpawn = 0;
         if (FullRandomSpawn)
         {
             StartEnemySpawningOld();
