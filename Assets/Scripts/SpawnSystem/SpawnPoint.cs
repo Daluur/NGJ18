@@ -9,6 +9,10 @@ public class SpawnPoint : MonoBehaviour {
     public float SpawnDelayForPS = 2f;
     public ParticleSystem spawnParticleSystem;
 
+	public AudioManager audioManager;
+	public AudioClip spawnSound;
+	private AudioSource audioSource;
+
     private PlayerManager _playerManager;
     public PlayerManager PlayerManager
     {
@@ -22,13 +26,22 @@ public class SpawnPoint : MonoBehaviour {
         }
     }
 
+	void Awake() 
+	{
+		audioSource = gameObject.GetComponent<AudioSource> ();
+		audioManager = GameObject.Find ("AudioManager").GetComponent<AudioManager> ();
+	} 
+
     public void StartSpawnSequence() {
-        if(spawnParticleSystem!=null)
-            spawnParticleSystem.Play();
+		if (spawnParticleSystem != null) {
+			audioManager.PlaySound (audioSource, spawnSound);
+			spawnParticleSystem.Play ();
+		}
         StartCoroutine(ShowParticleSystemBeforeSpawn());
     }
 
     private IEnumerator ShowParticleSystemBeforeSpawn() {
+		audioManager.PlaySound (audioSource, spawnSound);
         yield return new WaitForSeconds(SpawnDelayForPS);
         var idToSpawn = Random.Range(0, EnemiesItCanSpawn.Length);
         var enemyToSpawn = EnemiesItCanSpawn[idToSpawn];
