@@ -35,6 +35,11 @@ public class Enemy : MonoBehaviour, IEnemy
 		anim.SetTrigger("TookDamage");
     }
 
+	public bool IsBoss()
+	{
+		return !DieOnPlayerHit;
+	}
+
 	private void DoDeath()
     {
         Instantiate(DeathAnim, gameObject.transform.position, Quaternion.identity);
