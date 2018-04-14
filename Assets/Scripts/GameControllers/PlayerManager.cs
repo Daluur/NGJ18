@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour {
 
     public List<GeneralPlayer> Players = new List<GeneralPlayer>();
 
-    public const string scoreString = "";
+    public const string scoreString = "Score: ";
     public GameObject loseScreen;
     public Text ScoreText, FinalScoreText;
     [HideInInspector]
@@ -25,6 +25,8 @@ public class PlayerManager : MonoBehaviour {
     public int DepleteIncreaseInterval = 60;
 
     public float DepleteInterval = 1;
+
+	private bool gameEnded = false;
 
     private UIHandler _UIHandler;
     public UIHandler UIHandler {
@@ -84,18 +86,45 @@ public class PlayerManager : MonoBehaviour {
     private float gameStartTime;
 	// Update is called once per frame
 	void Update () {
+		if (gameEnded)
+		{
+			return;
+		}
+
         if (Players.Count == 0 || Players.Any(p => !p.playerHealth.GetIsInsane()))
         {
             Score += (int)(Time.timeSinceLevelLoad - gameStartTime) * 10;
             ScoreText.text = scoreString + Score;
-            return;
+			return;
         }
         else {
-            ScoreText.gameObject.SetActive(false);
-            FinalScoreText.text = scoreString + Score;
-            loseScreen.SetActive(true);
-            Time.timeScale = 0.0f;
+			if(!gameEnded)
+			{
+				EndGame();
+			}
         }
+	}
+
+	private void EndGame()
+	{
+		gameEnded = true;
+		var currentHighScore = PlayerPrefs.GetInt("HighScore");
+
+		if (Score > currentHighScore)
+		{
+			PlayerPrefs.SetInt("HighScore", Score);
+			FinalScoreText.text = "New highscore: " + Score;
+		}
+		else
+		{
+			FinalScoreText.text = scoreString + Score + "\nHighscore: " + currentHighScore;
+		}
+
+		ScoreText.gameObject.SetActive(false);
+		// FinalScoreText.text = scoreString + Score;
+		loseScreen.SetActive(true);
+
+		Time.timeScale = 0.0f;
 	}
 
     public IEnumerator IncreaseInsanityDepletion() {
