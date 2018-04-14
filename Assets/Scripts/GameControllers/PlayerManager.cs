@@ -85,7 +85,7 @@ public class PlayerManager : Singleton<PlayerManager> {
             ScoreText.gameObject.SetActive(false);
             FinalScoreText.text = scoreString + Score;
             loseScreen.SetActive(true);
-            //Time.timeScale = 0.0f;
+            Time.timeScale = 0.0f;
         }
 	}
 
