@@ -1167,7 +1167,7 @@ MonoBehaviour:
   - {fileID: 1558761936}
   - {fileID: 99304852}
   - {fileID: 166354160}
-  PressStartText: {fileID: 0}
+  PressStartText: {fileID: 938805112}
 --- !u!4 &1191463565
 Transform:
   m_ObjectHideFlags: 0
