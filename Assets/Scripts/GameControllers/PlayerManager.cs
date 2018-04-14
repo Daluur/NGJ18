@@ -18,6 +18,7 @@ public class PlayerManager : Singleton<PlayerManager> {
 
 	public Transform[] PlayerSpawnPositions;
 	public GameObject PlayerPrefab;
+	public GameObject PlayerMoveParticles;
 
     public int DepletePerTick = 4;
     public int MaxDepletePerSecond = 8;
@@ -39,7 +40,11 @@ public class PlayerManager : Singleton<PlayerManager> {
 			// We only add keyboard support.
 			var playerObj = Instantiate(PlayerPrefab, PlayerSpawnPositions[0].position, Quaternion.identity);
             playerObj.GetComponent<PlayerController>().Setup(new PlayerControllerData { ControllerID = 0, PlayerID = 1 }, PlayerSprites[0]);
-            Players.Add(playerObj.GetComponent<GeneralPlayer>());
+			var generalPlayer = playerObj.GetComponent<GeneralPlayer>();
+			Players.Add(generalPlayer);
+
+			var particles = Instantiate(PlayerMoveParticles, PlayerSpawnPositions[0].position, Quaternion.identity);
+			particles.GetComponent<FollowPlayer>().player = generalPlayer;
 			UIHandler.Instance.PlayerWasSpawned(playerObj.GetComponent<PlayerHealth>(), 1);
 		}
 		else
@@ -49,7 +54,13 @@ public class PlayerManager : Singleton<PlayerManager> {
 				// Create each of the players.
 				var playerObj = Instantiate(PlayerPrefab, PlayerSpawnPositions[player.PlayerID - 1].position, Quaternion.identity);
 				playerObj.GetComponent<PlayerController>().Setup(player, PlayerSprites[player.PlayerID - 1]);
-                Players.Add(playerObj.GetComponent<GeneralPlayer>());
+
+				var generalPlayer = playerObj.GetComponent<GeneralPlayer>();
+				Players.Add(generalPlayer);
+
+				var particles = Instantiate(PlayerMoveParticles, PlayerSpawnPositions[player.PlayerID - 1].position, Quaternion.identity);
+				particles.GetComponent<FollowPlayer>().player = generalPlayer;
+
 				UIHandler.Instance.PlayerWasSpawned(playerObj.GetComponent<PlayerHealth>(), player.PlayerID);
 			}
 		}
