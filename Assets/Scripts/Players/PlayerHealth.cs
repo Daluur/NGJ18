@@ -54,6 +54,10 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
 
     public void TakeDamage(int amount)
 	{
+		if (GetIsInsane())
+		{
+			return;
+		}
         if (Sanity - amount <= 0)
         {
             StartBreakingSequence();

@@ -183,6 +183,7 @@ MonoBehaviour:
   DeathAnim: {fileID: 1946258039018108, guid: 37bd8aedbe7ca274e88f3dc91e6cf1be, type: 2}
   Damage: 100
   SanityReward: 100
+  DieOnPlayerHit: 0
   anim: {fileID: 95922373038059666}
 --- !u!195 &195103871152898618
 NavMeshAgent:
