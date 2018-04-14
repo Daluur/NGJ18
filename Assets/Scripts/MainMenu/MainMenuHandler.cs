@@ -109,11 +109,18 @@ public class MainMenuHandler : MonoBehaviour {
 	private void StartGame()
 	{
 		CrossSceneData.Instance.UpdatePlayerListOnStartGame(Players);
-		SceneManager.LoadScene(1);
+		var numberOfLevels = SceneManager.sceneCountInBuildSettings - 2; // We do not count main menu or credits.
+		var levelToLoad = Random.Range(1, numberOfLevels + 1);
+		SceneManager.LoadScene(levelToLoad);
 	}
 
 	public void Quit()
 	{
 		Application.Quit();
+	}
+
+	public void Credits()
+	{
+		SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings - 1);
 	}
 }

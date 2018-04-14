@@ -257,6 +257,12 @@ MonoBehaviour:
   anim: {fileID: 95922373038059666}
   audioClip: {fileID: 8300000, guid: b0769cbf03ec84828a257fbdf10f116a, type: 3}
   audioManager: {fileID: 0}
+  Drops:
+  - {fileID: 1317571478805952, guid: 68348d6c7d411a646a67b8724d411ad3, type: 2}
+  - {fileID: 1804097734685152, guid: 5b6fff514ec5af844819d4b9e4877eb3, type: 2}
+  DropsProbability:
+  - 0.05
+  - 0.2
 --- !u!136 &136183913380600418
 CapsuleCollider:
   m_ObjectHideFlags: 1

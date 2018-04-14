@@ -15,7 +15,9 @@ public class LoseScreen : MonoBehaviour {
 		else if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("JoyStart"))
 		{
 			Time.timeScale = 1f;
-			SceneManager.LoadScene(1);
+			var numberOfLevels = SceneManager.sceneCountInBuildSettings - 2; // We do not count main menu or credits.
+			var levelToLoad = Random.Range(1, numberOfLevels + 1);
+			SceneManager.LoadScene(levelToLoad);
 		}
 	}
 }

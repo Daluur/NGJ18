@@ -11,3 +11,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Chris.unity
     guid: 4cc88432cd44bbc47b814c755e98159e
+  - enabled: 1
+    path: Assets/Scenes/Chris 1.unity
+    guid: c2c825e5481b75348a601f5ef1986a34
+  - enabled: 1
+    path: Assets/Scenes/Chris 2.unity
+    guid: 7a9fd20b5d4befc45a4291811e1f323c
+  - enabled: 1
+    path: Assets/Scenes/Chris 3.unity
+    guid: 405fa1b376ee05b4390ca9716e313838
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: dceb9d1234410754f96bee34ddb7881f

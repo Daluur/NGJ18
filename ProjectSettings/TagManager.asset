@@ -10,6 +10,7 @@ TagManager:
   - Boundary
   - Playermanager
   - UIHandler
+  - Potion
   layers:
   - Default
   - TransparentFX

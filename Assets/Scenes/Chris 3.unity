@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -372,7 +372,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1578642970
+  randomSeed: 348482031
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4023,7 +4023,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 20569144
+  randomSeed: 490394632
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -12260,7 +12260,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1300110744
+  randomSeed: -474227037
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -17272,7 +17272,8 @@ MonoBehaviour:
   - {fileID: 114983563407106224, guid: 31c4214d6f0988a42bf2d53305832dcf, type: 2}
   - {fileID: 114983563407106224, guid: 5b6fff514ec5af844819d4b9e4877eb3, type: 2}
   Ranges:
-  - {x: 1, y: 2}
+  - {x: 0, y: 1}
+  - {x: 2, y: 3}
   - {x: 2, y: 5}
   SpawnDelayForPS: 2
   spawnParticleSystem: {fileID: 0}
