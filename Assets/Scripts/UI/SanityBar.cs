@@ -6,14 +6,13 @@ using UnityEngine.UI;
 public class SanityBar : MonoBehaviour {
 
     public Image Background, Bar, InsanityBar;
-    public Color BackgroundColor = Color.grey, NormalColor = Color.green, CriticalColor = Color.red;
+	public Gradient Gradient;
 
     private PlayerHealth playerHealth;
 
 	public void AssignPlayer(PlayerHealth player)
 	{
 		playerHealth = player;
-		Background.color = BackgroundColor;
 		gameObject.SetActive(true);
 	}
 	
@@ -33,14 +32,15 @@ public class SanityBar : MonoBehaviour {
         Bar.gameObject.SetActive(true);
         var fillAmount = playerHealth.Sanity / 100f;
         Bar.fillAmount = fillAmount;
-        if(fillAmount < 0.2)
-        {
-            //TODO: Possibly do some animation
-            Bar.color = CriticalColor;
-        }else
-        {
-            Bar.color = NormalColor;
-        }
+		Bar.color = Gradient.Evaluate(fillAmount);
+        //if(fillAmount < 0.2)
+        //{
+        //    //TODO: Possibly do some animation
+        //    Bar.color = CriticalColor;
+        //}else
+        //{
+        //    Bar.color = NormalColor;
+        //}
 
     }
 
