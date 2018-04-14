@@ -14,11 +14,6 @@ public class EnemyMovement : MonoBehaviour {
             print("nav agent is not set on enemy");
         targetedPlayer = Players[0];
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     private void FixedUpdate()
     {

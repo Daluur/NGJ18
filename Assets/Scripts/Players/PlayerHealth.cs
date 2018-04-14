@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour, IPlayer {
 
     public void RewardSanity(int amount)
     {
+        Debug.Log(amount);
         Sanity += amount;
     }
 
