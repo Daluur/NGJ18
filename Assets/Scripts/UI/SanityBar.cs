@@ -7,6 +7,7 @@ public class SanityBar : MonoBehaviour {
 
     public Image Background, Bar, InsanityBar;
 	public Gradient Gradient;
+    public Animator anim;
 
     private PlayerHealth playerHealth;
 
@@ -33,14 +34,14 @@ public class SanityBar : MonoBehaviour {
         var fillAmount = playerHealth.Sanity / 100f;
         Bar.fillAmount = fillAmount;
 		Bar.color = Gradient.Evaluate(fillAmount);
-        //if(fillAmount < 0.2)
-        //{
-        //    //TODO: Possibly do some animation
-        //    Bar.color = CriticalColor;
-        //}else
-        //{
-        //    Bar.color = NormalColor;
-        //}
+        if(fillAmount < 0.2)
+        {
+            anim.SetBool("CloseBreaking", true);
+            
+        }else
+        {
+            anim.SetBool("CloseBreaking", false);
+        }
 
     }
 
