@@ -64,7 +64,7 @@ public class PlayerShoot : MonoBehaviour {
 		var direction = BulletSpawnPosition.forward;
 		direction.y = 0;
 		bullet.GetComponent<Bullet>().Setup(direction, playerHealth);
-		audioManager.PlayRandomSound (audioSource, shootingSound); 
+		audioManager.PlayRandomSound (audioSource, shootingSound, 1f, true); 
 		if(lastBulletTypeFired > amountOfBullets)
 		{
 			lastBulletTypeFired = 0;

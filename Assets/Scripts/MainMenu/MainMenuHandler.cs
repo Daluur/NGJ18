@@ -111,4 +111,9 @@ public class MainMenuHandler : MonoBehaviour {
 		CrossSceneData.Instance.UpdatePlayerListOnStartGame(Players);
 		SceneManager.LoadScene(1);
 	}
+
+	public void Quit()
+	{
+		Application.Quit();
+	}
 }

@@ -39,6 +39,7 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
 
 	public AudioManager audioManager;
 	public AudioClip insanitySound;
+	public AudioClip godModeSound;
 
 	private AudioSource audioSource;
 
@@ -56,7 +57,9 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
         if (Sanity + amount >= MaxSanity) {
             Sanity = MaxSanity;
             if (!GodMode) { 
-                GodMode = true;
+				audioSource.pitch = 1.2f;
+				audioManager.PlaySound (audioSource, godModeSound, 1f, true);
+				audioSource.pitch = 1f;
                 StartCoroutine(GodModeTimer());
             }
 
@@ -106,7 +109,7 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
         if (IsInsane)
             return;
         IsInsane = true;
-		audioManager.PlaySound (audioSource, insanitySound);
+		audioManager.PlaySound (audioSource, insanitySound, 1f, true);
 		StartCoroutine(audioManager.ChangeBackgroundPitch(1.08f, 1.4f, 2f));
         StartCoroutine(BreakingSequence());
     }
@@ -155,8 +158,11 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
     }
 
     private IEnumerator GodModeTimer() {
+        GodMode = true;
+        anim.SetTrigger("EnterGodMode");
         yield return new WaitForSeconds(GodModeDuration);
         GodMode = false;
+        anim.SetTrigger("ExitGodMode");
         PlayerShoot.LaserCollider.gameObject.SetActive(false);
         Sanity = (int)(MaxSanity * 0.3f);
     }

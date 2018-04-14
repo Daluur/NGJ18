@@ -35,6 +35,11 @@ public class Enemy : MonoBehaviour, IEnemy
 		anim.SetTrigger("TookDamage");
     }
 
+	public bool IsBoss()
+	{
+		return !DieOnPlayerHit;
+	}
+
 	private void DoDeath()
     {
         Instantiate(DeathAnim, gameObject.transform.position, Quaternion.identity);
@@ -45,7 +50,7 @@ public class Enemy : MonoBehaviour, IEnemy
     {
         if (collision.gameObject.tag == "Player")
         {
-			audioManager.PlaySound (audioScource, audioClip);
+			audioManager.PlaySound (audioScource, audioClip, 1f, true);
             collision.gameObject.GetComponent<IPlayer>().TakeDamage(Damage);
 			if (DieOnPlayerHit)
 			{

@@ -16,20 +16,28 @@ public class AudioManager : MonoBehaviour {
 		audioSource.Play ();
 	}
 
-	public void PlayRandomSound(AudioSource source, AudioClip[] clips)
+	public void PlayRandomSound(AudioSource source, AudioClip[] clips, float vol, bool randomPitch)
 	{
 		int rnd = Random.Range (0, clips.Length);
 		source.clip = clips[rnd];
-		source.pitch = Random.Range (.9f, 1.1f);
-		source.volume = Random.Range (.9f, 1.1f);
+		if (randomPitch) {
+			source.pitch = Random.Range (.9f, 1.1f);
+			source.volume = vol + Random.Range (-.1f, .1f);
+		} else {
+			source.volume = vol;
+		}
 		source.Play ();
 	}
 
-	public void PlaySound(AudioSource source, AudioClip clip)
+	public void PlaySound(AudioSource source, AudioClip clip, float vol, bool randomPitch)
 	{
 		source.clip = clip;
-		source.pitch = Random.Range (.9f, 1.1f);
-		source.volume = Random.Range (.9f, 1.1f);
+		if (randomPitch) {
+			source.pitch = Random.Range (.9f, 1.1f);
+			source.volume = vol + Random.Range (-.1f, .1f);
+		} else {
+			source.volume = vol;
+		}
 		source.Play ();
 	}
 
