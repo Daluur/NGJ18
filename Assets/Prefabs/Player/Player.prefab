@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 54993194503594920}
   - component: {fileID: 195592958229042990}
   - component: {fileID: 82435007902633484}
+  - component: {fileID: 95546583840463724}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -273,6 +274,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95546583840463724
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1736833863406592}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7512de42a35e5464682258bf114f035b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114235992219706184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -340,6 +358,7 @@ MonoBehaviour:
   BreakParticles: {fileID: 1903493786685586, guid: 4bce4e9347a5bea4d8a44fefdbc26adf,
     type: 2}
   InsanityDamage: 120
+  anim: {fileID: 95546583840463724}
   InsanityStartTime: 0
   audioManager: {fileID: 0}
   insanitySound: {fileID: 8300000, guid: e4870e44de5eb4c118dbd8b93c47e65d, type: 3}
