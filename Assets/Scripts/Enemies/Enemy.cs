@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour, IEnemy
     public GameObject DeathAnim;
     public int Damage = 15;
     public int SanityReward = 1;
+	public Animator anim;
 
     public void TakeDamage(int amount, IPlayer player)
     {
@@ -18,9 +19,10 @@ public class Enemy : MonoBehaviour, IEnemy
             return;
         }
         Health = Health - amount;
+		anim.SetTrigger("TookDamage");
     }
 
-    private void DoDeath()
+	private void DoDeath()
     {
         Instantiate(DeathAnim, gameObject.transform.position, Quaternion.identity);
         Destroy(gameObject);
