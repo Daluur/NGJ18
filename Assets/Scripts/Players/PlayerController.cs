@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
 	public float MoveSpeed = 3;
 	public Transform GunModel;
 	public PlayerShoot Gun;
+	public Rigidbody body;
 
 	public int controllerID = 0;
 	public int playerID = 0;
@@ -49,7 +50,7 @@ public class PlayerController : MonoBehaviour {
 		var xAxis = Input.GetAxis(moveXString) * MoveSpeed * Time.deltaTime;
 		var yAxis = Input.GetAxis(moveYString) * MoveSpeed * Time.deltaTime;
 
-		transform.position += new Vector3(xAxis, 0, yAxis);
+		body.MovePosition(transform.position + new Vector3(xAxis, 0, yAxis));
 
 		var torsoX = Input.GetAxis(torsoXString);
 		var torsoY = Input.GetAxis(torsoYString);

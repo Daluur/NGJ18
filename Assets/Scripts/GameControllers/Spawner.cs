@@ -66,7 +66,8 @@ public class Spawner : MonoBehaviour {
         }
     }
 
-    private void ActualSpawnEnemy(Vector3 spawnPos) {
+    private void ActualSpawnEnemy(Vector3 spawnPos)
+	{
         var go = Instantiate(EnemyPrefab, spawnPos, Quaternion.identity);
         go.GetComponent<EnemyMovement>().Players = PlayerManager.Instance.Players.ToArray();
     }
