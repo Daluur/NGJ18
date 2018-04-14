@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour {
 
 	public float MoveSpeed = 3;
 	public Transform GunModel;
 	public PlayerShoot Gun;
+
+	public Rigidbody Body;
+	public NavMeshAgent Agent;
 
     public IPlayer player;
 
@@ -59,7 +63,7 @@ public class PlayerController : MonoBehaviour {
 		var xAxis = Input.GetAxis(moveXString) * MoveSpeed * Time.deltaTime;
 		var yAxis = Input.GetAxis(moveYString) * MoveSpeed * Time.deltaTime;
 
-		body.MovePosition(transform.position + new Vector3(xAxis, 0, yAxis));
+		Body.MovePosition(transform.position + new Vector3(xAxis, 0, yAxis));
 
 		var torsoX = Input.GetAxis(torsoXString);
 		var torsoY = Input.GetAxis(torsoYString);
