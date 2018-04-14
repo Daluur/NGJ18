@@ -33,9 +33,16 @@ public class AudioManager : MonoBehaviour {
 		source.Play ();
 	}
 
-	public void InsanitySound() 
+	public IEnumerator ChangeBackgroundPitch(float startPitch, float targetPitch, float fadeSpeed) 
 	{
-		
+		float t = 0;
+		while (t < fadeSpeed) 
+		{
+			t += Time.deltaTime;
+			float blend = Mathf.Clamp01(t / fadeSpeed);
+			audioSource.pitch = Mathf.Lerp(startPitch, targetPitch, blend);
+			yield return null;
+		}
 	}
 
 }
