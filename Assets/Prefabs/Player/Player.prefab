@@ -388,7 +388,7 @@ MonoBehaviour:
   playerHealth: {fileID: 0}
   playerController: {fileID: 0}
   MaxSanity: 100
-  Sanity: 95
+  Sanity: 50
   IsInsane: 0
   InsaneConversionAnimPlaying: 0
   BreakingAnimTimeStart: 1
