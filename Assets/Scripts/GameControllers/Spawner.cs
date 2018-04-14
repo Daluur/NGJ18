@@ -3,74 +3,131 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Spawner : MonoBehaviour {
+public class Spawner : Singleton<Spawner> {
 
-    public float SpawnInterval = 1;
-    public float SpawnIntervalDecrease = 0.05f;
-    public float TimeBeforeSpawnIntervalDecreases = 30f;
+    public float SpawnIntervalOld = 1;
+    public float SpawnIntervalDecreaseOld = 0.05f;
+    public float TimeBeforeSpawnIntervalDecreasesOld = 30f;
 
-    public GameObject[] SpawnPoints;
+    public float SpawnIntervalBetweenSequence = 1f;
+    public float SpawnIntervalDecreaseSequence = 0.05f;
+    public float TimeBeforeSpawnIntervalDecreasesSequence = 30f;
+
+    public int IncreaseInSpawn = 0;
+    public float TimeBeforeSpawnIncreases = 60f;
+
+    public SpawnGroup[] SpawnGroups;
     public GameObject EnemyPrefab;
+
+    [Tooltip("Leaving an entry empty, means ALL SPAWNS!!!")]
+    public SpawnGroup[] SequenceToSpawnFrom;
+
+    [Tooltip("This uses the first way of spawning, it does not balance anything at all!")]
+    public bool FullRandomSpawn = true;
+
 
 
 	// Use this for initialization
 	void Start () {
-        StartEnemySpawning();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        if (FullRandomSpawn)
+        {
+            StartEnemySpawningOld();
+        }
+        else
+        {
+            StartCoroutine(SpawnIntervalDecreaseCoroutineSequence());
+            StartCoroutine(SpawnEnemiesSequence());
+            StartCoroutine(SpawnAmountIncreaseSequence());
+        }
 
+    }
 
-    private void FixedUpdate()
+    private IEnumerator SpawnAmountIncreaseSequence() {
+        while (true)
+        {
+            yield return new WaitForSeconds(TimeBeforeSpawnIncreases);
+            IncreaseInSpawn++;
+        }
+    }
+
+    private IEnumerator SpawnIntervalDecreaseCoroutineSequence()
     {
-
+        while (true)
+        {
+            yield return new WaitForSeconds(TimeBeforeSpawnIntervalDecreasesSequence);
+            if (SpawnIntervalBetweenSequence - SpawnIntervalDecreaseSequence > 0.015f)
+            {
+                SpawnIntervalBetweenSequence -= SpawnIntervalDecreaseSequence;
+            }
+        }
     }
 
-    private void StartEnemySpawning() {
-        StartCoroutine(SpawnEnemies());
-        StartCoroutine(SpawnIntervalDecreaseCoroutine());
+    private IEnumerator SpawnEnemiesSequence() {
+        while (true)
+        {
+            foreach(var sp in SequenceToSpawnFrom) {
+                yield return new WaitForSeconds(SpawnIntervalBetweenSequence);
+                if (sp == null)
+                {
+                    foreach(var spawnPoint in SequenceToSpawnFrom)
+                    {
+                        sp.Spawn();
+                    }
+                }
+                else
+                { 
+                    sp.Spawn();
+                }
+            }
+
+        }
     }
 
-    private IEnumerator SpawnIntervalDecreaseCoroutine() {
+    private void StartEnemySpawningOld() {
+        StartCoroutine(SpawnEnemiesOld());
+        StartCoroutine(SpawnIntervalDecreaseCoroutineOld());
+    }
+
+    private IEnumerator SpawnIntervalDecreaseCoroutineOld() {
 		yield return new WaitForSeconds(3);
 		while (true) {
-            yield return new WaitForSeconds(TimeBeforeSpawnIntervalDecreases);
-            if(SpawnInterval - SpawnIntervalDecrease > 0.015f)
+            yield return new WaitForSeconds(TimeBeforeSpawnIntervalDecreasesOld);
+            if(SpawnIntervalOld - SpawnIntervalDecreaseOld > 0.015f)
             {
-                SpawnInterval -= SpawnIntervalDecrease;
+                SpawnIntervalOld -= SpawnIntervalDecreaseOld;
             }
         }
     }
     
-    private IEnumerator SpawnEnemies() {
+    private IEnumerator SpawnEnemiesOld() {
 		yield return new WaitForSeconds(3);
         while (true)
         {
-            yield return new WaitForSeconds(SpawnInterval);
-            SpawnEnemy();
+            yield return new WaitForSeconds(SpawnIntervalOld);
+            SpawnEnemyOld();
         }
     }
 
-    private void SpawnEnemy() {
-        var spawnPointIdx = Random.Range(0, SpawnPoints.Length + 1);
-        if(spawnPointIdx == SpawnPoints.Length) {
-            foreach(var sp in SpawnPoints)
+    private void SpawnEnemyOld() {
+        var spawnPointIdx = Random.Range(0, SpawnGroups.Length + 1);
+        if(spawnPointIdx == SpawnGroups.Length) {
+            foreach(var sp in SpawnGroups)
             {
-                ActualSpawnEnemy(sp.transform.position);
+                sp.Spawn();
             }
         }
         else {
-            ActualSpawnEnemy(SpawnPoints[spawnPointIdx].transform.position);
+            SpawnGroups[spawnPointIdx].Spawn();
         }
     }
 
-    private void ActualSpawnEnemy(Vector3 spawnPos)
+    public static void ActualSpawnEnemy(Vector3 spawnPos, Enemy toSpawn = null, int amountToSpawn = 1)
 	{
-        var go = Instantiate(EnemyPrefab, spawnPos, Quaternion.identity);
-        go.GetComponent<EnemyMovement>().Players = PlayerManager.Instance.Players.Select(t => t.gameObject).ToArray();
+        for (int i = 0; i < amountToSpawn + Spawner.Instance.IncreaseInSpawn; i++)
+        {
+            var go = Instantiate(toSpawn.gameObject, spawnPos, Quaternion.identity);
+            go.GetComponent<EnemyMovement>().Players = PlayerManager.Instance.Players.Select(t => t.gameObject).ToArray();
+        }
     }
 
 
