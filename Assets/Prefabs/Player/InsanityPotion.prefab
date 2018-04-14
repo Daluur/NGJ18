@@ -120,6 +120,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RewardInsanityAmount: 30
   scaleTime: 0.3
+  StartBlinkingAfterSeconds: 3
+  BlinkSpeed: 0.2
+  RemoveAfterSeconds: 6
+  renderer: {fileID: 212966102870461426}
 --- !u!212 &212966102870461426
 SpriteRenderer:
   m_ObjectHideFlags: 1
