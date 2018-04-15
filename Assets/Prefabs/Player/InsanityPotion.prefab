@@ -148,7 +148,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -160,7 +160,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -172,7 +172,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!111 &111446319380037002
 Animation:
   m_ObjectHideFlags: 1
@@ -204,7 +204,7 @@ MonoBehaviour:
   StartBlinkingAfterSeconds: 4
   BlinkSpeed: 0.2
   RemoveAfterSeconds: 8
-  renderer: {fileID: 212966102870461426}
+  Renderer: {fileID: 212966102870461426}
   audioManager: {fileID: 0}
   potionSound: {fileID: 8300000, guid: 1aa840f66e91d43649cf5772b1c1c3df, type: 3}
 --- !u!212 &212966102870461426

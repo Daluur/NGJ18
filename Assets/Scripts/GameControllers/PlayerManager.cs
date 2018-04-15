@@ -126,7 +126,13 @@ public class PlayerManager : MonoBehaviour {
 		// FinalScoreText.text = scoreString + Score;
 		loseScreen.SetActive(true);
 
-		Time.timeScale = 0.0f;
+		// Time.timeScale = 0.0f;
+		EnemyMovement.GameEnded = true;
+		PlayerController.GameEnded = true;
+		Spawner.GameEnded = true;
+		PlayerHealth.GameEnded = true;
+		SanityBar.GameEnded = true;
+		SpawnPoint.GameEnded = true;
 	}
 
     public IEnumerator IncreaseInsanityDepletion() {

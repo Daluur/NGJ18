@@ -43,6 +43,8 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
 
 	private AudioSource audioSource;
 
+	public static bool GameEnded = false;
+
 	void Awake() 
 	{
         base.Awake();
@@ -52,7 +54,7 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
 	
     public void RewardSanity(int amount)
     {
-        if (GodMode)
+        if (GodMode || GameEnded)
             return;
         if (Sanity + amount >= MaxSanity) {
             Sanity = MaxSanity;
@@ -70,7 +72,7 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
 
     public void TakeDamage(int amount)
 	{
-        if (GodMode)
+        if (GodMode || GameEnded)
             return;
 		if (GetIsInsane())
 		{
@@ -90,7 +92,7 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
     }
 
     private IEnumerator DepleteSanity() {
-        while (true) {
+        while (!GameEnded) {
             yield return new WaitForSeconds(PlayerManager.DepleteInterval);
             TakeDamage(PlayerManager.DepletePerTick);
         }
@@ -123,6 +125,10 @@ public class PlayerHealth : GeneralPlayer, IPlayer {
         InsanityStartTime = Time.timeSinceLevelLoad;
         yield return new WaitForSeconds(BreakDuration);
         InsaneConversionAnimPlaying = true;
+		if(GameEnded)
+		{
+			yield break;
+		}
         anim.SetTrigger("PlayerNormal");
         yield return new WaitForSeconds(BreakingAnimTimeEnd);
         InsaneConversionAnimPlaying = false;

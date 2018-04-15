@@ -190,7 +190,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -257,8 +257,10 @@ MonoBehaviour:
   anim: {fileID: 95922373038059666}
   audioClip: {fileID: 8300000, guid: b0769cbf03ec84828a257fbdf10f116a, type: 3}
   audioManager: {fileID: 0}
-  Drops: []
-  DropsProbability: []
+  Drops:
+  - {fileID: 1417903668374268, guid: 68d486088951772439563796b8c63e05, type: 2}
+  DropsProbability:
+  - 0.2
 --- !u!136 &136183913380600418
 CapsuleCollider:
   m_ObjectHideFlags: 1
