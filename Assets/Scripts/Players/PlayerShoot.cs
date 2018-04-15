@@ -38,14 +38,16 @@ public class PlayerShoot : MonoBehaviour {
         if (playerHealth.GodMode)
         {
             LaserCollider.gameObject.SetActive(true);
+            var scaleFactor = LaserCollider.transform.localScale.y / playerHealth.gameObject.transform.localScale.y;
             RaycastHit hit;
-            if(Physics.Raycast(BulletSpawnPosition.position, BulletSpawnPosition.forward, out hit, 1000f, LaserLayerMask))
+            Debug.DrawRay(new Vector3(BulletSpawnPosition.position.x, BulletSpawnPosition.position.y - 0.1f, BulletSpawnPosition.position.z), BulletSpawnPosition.forward);
+            if(Physics.Raycast(new Vector3(BulletSpawnPosition.position.x, BulletSpawnPosition.position.y - 0.1f, BulletSpawnPosition.position.z), BulletSpawnPosition.forward, out hit, 1000f, LaserLayerMask))
             {
-                LaserCollider.transform.localScale = new Vector3(hit.distance, 1f, 1f);
+                LaserCollider.transform.localScale = new Vector3(hit.distance * scaleFactor, 1f, 1f);
                 LaserCollider.transform.position = BulletSpawnPosition.position + BulletSpawnPosition.forward * hit.distance / 2;
             }
             else {
-                LaserCollider.transform.localScale = new Vector3(100f, 1f, 1f);
+                LaserCollider.transform.localScale = new Vector3(100f * scaleFactor, 1f, 1f);
                 LaserCollider.transform.position = BulletSpawnPosition.position + BulletSpawnPosition.forward * 100f / 2;
             }
 
