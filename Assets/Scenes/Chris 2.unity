@@ -11004,6 +11004,66 @@ Prefab:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 114352223275709728, guid: 3da9c8887a9f0984f9d3ff9e2fe5502f,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114352223275709728, guid: 3da9c8887a9f0984f9d3ff9e2fe5502f,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.3254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 114352223275709728, guid: 3da9c8887a9f0984f9d3ff9e2fe5502f,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.23921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 114569806815094406, guid: 3da9c8887a9f0984f9d3ff9e2fe5502f,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114569806815094406, guid: 3da9c8887a9f0984f9d3ff9e2fe5502f,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.3254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 114569806815094406, guid: 3da9c8887a9f0984f9d3ff9e2fe5502f,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.23921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 114484042311847034, guid: 3da9c8887a9f0984f9d3ff9e2fe5502f,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114484042311847034, guid: 3da9c8887a9f0984f9d3ff9e2fe5502f,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.3254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 114484042311847034, guid: 3da9c8887a9f0984f9d3ff9e2fe5502f,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.23921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 114413337294146170, guid: 3da9c8887a9f0984f9d3ff9e2fe5502f,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114413337294146170, guid: 3da9c8887a9f0984f9d3ff9e2fe5502f,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.3254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 114413337294146170, guid: 3da9c8887a9f0984f9d3ff9e2fe5502f,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.23921569
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3da9c8887a9f0984f9d3ff9e2fe5502f, type: 2}
   m_IsPrefabParent: 0
