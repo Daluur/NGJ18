@@ -9,6 +9,7 @@ public class MainMenuHandler : MonoBehaviour {
 	private static int MAXNUMBEROFJOYSTICKS = 8;
 
 	public GameObject[] PlayerImages;
+	public GameObject[] JoinText;
 	public GameObject PressStartText;
 
 	private List<PlayerControllerData> Players = new List<PlayerControllerData>();
@@ -85,6 +86,7 @@ public class MainMenuHandler : MonoBehaviour {
 	private void UpdateUI()
 	{
 		var currentlyAssignedPlayers = Players.Select(pcd => pcd.PlayerID);
+		var playerPanelsNOTActive = new List<int>();
 		for (int i = 0; i < PlayerImages.Length; i++)
 		{
 			if (currentlyAssignedPlayers.Contains(i + 1))
@@ -94,6 +96,7 @@ public class MainMenuHandler : MonoBehaviour {
 			else
 			{
 				PlayerImages[i].SetActive(false);
+				playerPanelsNOTActive.Add(i);
 			}
 		}
 		if(Players.Count > 0)
@@ -103,6 +106,15 @@ public class MainMenuHandler : MonoBehaviour {
 		else
 		{
 			PressStartText.SetActive(false);
+		}
+		for (int i = 0; i < JoinText.Length; i++)
+		{
+			JoinText[i].SetActive(false);
+		}
+		if (playerPanelsNOTActive.Count > 0)
+		{
+			var textToShow = playerPanelsNOTActive.OrderBy(i => i).First();
+			JoinText[textToShow].SetActive(true);
 		}
 	} 
 
