@@ -132,9 +132,7 @@ public class MainMenuHandler : MonoBehaviour {
 
 	public void PlayAloneWithKeyboard()
 	{
-		Players = new List<PlayerControllerData>();
-		Players.Add(new PlayerControllerData { ControllerID = 0, PlayerID = 0 });
-		CrossSceneData.Instance.UpdatePlayerListOnStartGame(Players);
+		CrossSceneData.Instance.UpdatePlayerListOnStartGame(null);
 		SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings - 2);
 	}
 

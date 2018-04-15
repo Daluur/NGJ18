@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 public class HowToPlay : MonoBehaviour {
 
 	public GameObject KeyboardText;
+	public GameObject ControllerText;
 
 	private void Start()
 	{
-		var players = CrossSceneData.Instance.GetPlayers();
-		if(players.Count == 1 && players[0].ControllerID == 0)
+		if(CrossSceneData.Instance.GetPlayers() == null)
 		{
+			ControllerText.SetActive(false);
 			KeyboardText.SetActive(true);
 		}
 	}
