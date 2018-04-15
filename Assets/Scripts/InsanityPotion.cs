@@ -23,6 +23,8 @@ public class InsanityPotion : MonoBehaviour {
 
 	private AudioSource audioSource;
 
+	private bool hasBeenPickedUP = false;
+
 	void Awake() 
 	{
 		audioSource = gameObject.GetComponent<AudioSource> ();
@@ -37,6 +39,11 @@ public class InsanityPotion : MonoBehaviour {
 
 	void Update()
 	{
+		if (hasBeenPickedUP)
+		{
+			Renderer.enabled = false;
+			return;
+		}
 		timeInScene += Time.deltaTime;
 		if (timeInScene > StartBlinkingAfterSeconds && timeInScene < RemoveAfterSeconds)
 		{
@@ -66,8 +73,9 @@ public class InsanityPotion : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if(other.tag == "Player")
+		if(other.tag == "Player" && !hasBeenPickedUP)
 		{
+			hasBeenPickedUP = true;
 			other.GetComponent<IPlayer>().RewardSanity(RewardInsanityAmount);
 			StartCoroutine ("PlayPotionSound");
 		}
