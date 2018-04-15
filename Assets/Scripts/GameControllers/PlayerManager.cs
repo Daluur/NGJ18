@@ -95,7 +95,7 @@ public class PlayerManager : MonoBehaviour {
         if (Players.Count == 0 || Players.Any(p => !p.playerHealth.GetIsInsane()))
         {
             Score += (int)(Time.timeSinceLevelLoad - gameStartTime) * 10;
-            ScoreText.text = Score;
+            ScoreText.text = Score.ToString();
 			return;
         }
         else {
