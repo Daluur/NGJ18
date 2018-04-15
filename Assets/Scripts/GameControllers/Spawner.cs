@@ -19,17 +19,17 @@ public class Spawner : MonoBehaviour {
     public SpawnGroup[] SpawnGroups;
     public GameObject EnemyPrefab;
 
+    public static bool FullRandomSpawn = false;
+
     [Tooltip("Leaving an entry empty, means ALL SPAWNS!!!")]
     public SpawnGroup[] SequenceToSpawnFrom;
-
-    [Tooltip("This uses the first way of spawning, it does not balance anything at all!")]
-    public bool FullRandomSpawn = true;
 
 	public static bool GameEnded = false;
 
 	// Use this for initialization
 	void Start () {
-		IncreaseInSpawn = 0;
+        SpawnGroups = gameObject.GetComponentsInChildren<SpawnGroup>();
+        IncreaseInSpawn = 0;
         if (FullRandomSpawn)
         {
             StartEnemySpawningOld();

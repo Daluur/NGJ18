@@ -38,6 +38,12 @@ public class MainMenuHandler : MonoBehaviour {
 				StartGame();
 			}
 		}
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Spawner.FullRandomSpawn = !Spawner.FullRandomSpawn;
+            Debug.Log("Fullrandom mode is: " + Spawner.FullRandomSpawn);
+        }
 		UpdateUI();
 	}
 
