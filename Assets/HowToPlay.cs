@@ -5,6 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class HowToPlay : MonoBehaviour {
 
+	public GameObject KeyboardText;
+	public GameObject ControllerText;
+
+	private void Start()
+	{
+		if(CrossSceneData.Instance.GetPlayers() == null)
+		{
+			ControllerText.SetActive(false);
+			KeyboardText.SetActive(true);
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("JoyStart"))
