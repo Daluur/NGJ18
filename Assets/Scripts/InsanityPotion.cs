@@ -19,6 +19,7 @@ public class InsanityPotion : MonoBehaviour {
 	[HideInInspector]
 	public AudioManager audioManager;
 	public AudioClip potionSound;
+	public AudioClip potionDrop;
 
 	private AudioSource audioSource;
 
@@ -26,6 +27,7 @@ public class InsanityPotion : MonoBehaviour {
 	{
 		audioSource = gameObject.GetComponent<AudioSource> ();
 		audioManager = GameObject.Find ("AudioManager").GetComponent<AudioManager> ();
+		audioManager.PlaySound (audioSource, potionDrop, 1.1f, true); 
 	}
 
 	private void Start()
@@ -66,9 +68,14 @@ public class InsanityPotion : MonoBehaviour {
 	{
 		if(other.tag == "Player")
 		{
-			audioManager.PlaySound (audioSource, potionSound, 1.2f, true); 
 			other.GetComponent<IPlayer>().RewardSanity(RewardInsanityAmount);
-			Destroy(gameObject);
+			StartCoroutine ("PlayPotionSound");
 		}
+	}
+
+	IEnumerator PlayPotionSound() {
+		audioManager.PlaySound (audioSource, potionSound, 1.2f, true); 
+		yield return new WaitForSeconds (potionSound.length);
+		Destroy(gameObject);
 	}
 }
