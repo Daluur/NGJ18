@@ -74,7 +74,8 @@ public class InsanityPotion : MonoBehaviour {
 	}
 
 	IEnumerator PlayPotionSound() {
-		audioManager.PlaySound (audioSource, potionSound, 1.2f, true); 
+        gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
+		audioManager.PlaySound (audioSource, potionSound, 2f, true); 
 		yield return new WaitForSeconds (potionSound.length);
 		Destroy(gameObject);
 	}
