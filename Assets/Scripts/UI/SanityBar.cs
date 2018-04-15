@@ -11,6 +11,8 @@ public class SanityBar : MonoBehaviour {
 
     private PlayerHealth playerHealth;
 
+	public static bool GameEnded = false;
+
 	public void AssignPlayer(PlayerHealth player)
 	{
 		playerHealth = player;
@@ -19,6 +21,10 @@ public class SanityBar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (GameEnded)
+		{
+			return;
+		}
         if (playerHealth.GetIsInsane())
         {
             UpdateInsanityBar();

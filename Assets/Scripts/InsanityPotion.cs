@@ -10,7 +10,7 @@ public class InsanityPotion : MonoBehaviour {
 	private float TimeSinceBlink = 0f;
 	public float BlinkSpeed = 0.2f;
 	public float RemoveAfterSeconds = 6;
-	public SpriteRenderer renderer;
+	public SpriteRenderer Renderer;
 
 	private bool finishedScaling = false;
 	private Vector3 scale = Vector3.zero;
@@ -42,7 +42,7 @@ public class InsanityPotion : MonoBehaviour {
 			if(TimeSinceBlink > BlinkSpeed)
 			{
 				TimeSinceBlink = 0;
-				renderer.enabled = !renderer.enabled;
+				Renderer.enabled = !Renderer.enabled;
 			}
 		}
 		if(timeInScene > RemoveAfterSeconds)

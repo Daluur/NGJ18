@@ -9,6 +9,8 @@ public class EnemyMovement : MonoBehaviour {
     public GameObject targetedPlayer;
     public NavMeshAgent navAgent;
 
+	public static bool GameEnded = false;
+
     private PlayerManager _playerManager;
     public PlayerManager PlayerManager
     {
@@ -30,6 +32,11 @@ public class EnemyMovement : MonoBehaviour {
 
     private void FixedUpdate()
     {
+		if(GameEnded)
+		{
+			navAgent.isStopped = true;
+			return;
+		}
         targetedPlayer = SharedMovement.SelectEnemy(gameObject, PlayerManager.Players);
         navAgent.SetDestination(targetedPlayer.transform.position);
     }    

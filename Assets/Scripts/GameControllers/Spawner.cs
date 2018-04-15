@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour {
     [Tooltip("Leaving an entry empty, means ALL SPAWNS!!!")]
     public SpawnGroup[] SequenceToSpawnFrom;
 
-
+	public static bool GameEnded = false;
 
 	// Use this for initialization
 	void Start () {
@@ -44,7 +44,7 @@ public class Spawner : MonoBehaviour {
     }
 
     private IEnumerator SpawnAmountIncreaseSequence() {
-        while (true)
+        while (!GameEnded)
         {
             yield return new WaitForSeconds(TimeBeforeSpawnIncreases);
             IncreaseInSpawn++;
@@ -53,7 +53,7 @@ public class Spawner : MonoBehaviour {
 
     private IEnumerator SpawnIntervalDecreaseCoroutineSequence()
     {
-        while (true)
+        while (!GameEnded)
         {
             yield return new WaitForSeconds(TimeBeforeSpawnIntervalDecreasesSequence);
             if (SpawnIntervalBetweenSequence - SpawnIntervalDecreaseSequence > 0.015f)
@@ -64,10 +64,14 @@ public class Spawner : MonoBehaviour {
     }
 
     private IEnumerator SpawnEnemiesSequence() {
-        while (true)
+        while (!GameEnded)
         {
             foreach(var sp in SequenceToSpawnFrom) {
                 yield return new WaitForSeconds(SpawnIntervalBetweenSequence);
+				if (GameEnded)
+				{
+					yield break;
+				}
                 if (sp == null)
                 {
                     foreach(var spawnPoint in SequenceToSpawnFrom)
@@ -95,7 +99,7 @@ public class Spawner : MonoBehaviour {
 
     private IEnumerator SpawnIntervalDecreaseCoroutineOld() {
 		yield return new WaitForSeconds(3);
-		while (true) {
+		while (!GameEnded) {
             yield return new WaitForSeconds(TimeBeforeSpawnIntervalDecreasesOld);
             if(SpawnIntervalOld - SpawnIntervalDecreaseOld > 0.015f)
             {
@@ -106,7 +110,7 @@ public class Spawner : MonoBehaviour {
     
     private IEnumerator SpawnEnemiesOld() {
 		yield return new WaitForSeconds(3);
-        while (true)
+        while (!GameEnded)
         {
             yield return new WaitForSeconds(SpawnIntervalOld);
             SpawnEnemyOld();
@@ -128,6 +132,10 @@ public class Spawner : MonoBehaviour {
 
     public static void ActualSpawnEnemy(Vector3 spawnPos, List<GeneralPlayer> players, Enemy toSpawn = null, int amountToSpawn = 1)
 	{
+		if(GameEnded)
+		{
+			return;
+		}
 		var amountToSpawnWithIncrease = amountToSpawn + Spawner.IncreaseInSpawn;
 		if (!toSpawn.DieOnPlayerHit) // It is the boss.
 		{

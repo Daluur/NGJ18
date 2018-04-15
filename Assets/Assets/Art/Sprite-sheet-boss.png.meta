@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 81f27cfac76bcbc4fbdca9bd6d5f0218
-timeCreated: 1523708814
+guid: 03e1cccc501bf494b8f5eb06b946b1b0
+timeCreated: 1523784311
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -117,9 +117,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 25
-        y: 35
+        y: 36
         width: 113
-        height: 216
+        height: 215
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,10 +130,10 @@ TextureImporter:
       name: Boss 02
       rect:
         serializedVersion: 2
-        x: 220
-        y: 28
-        width: 114
-        height: 217
+        x: 221
+        y: 29
+        width: 113
+        height: 215
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

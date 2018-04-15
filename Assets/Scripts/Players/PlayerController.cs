@@ -29,6 +29,8 @@ public class PlayerController : GeneralPlayer {
 	private string torsoYString;
 	private string shootString;
 
+	public static bool GameEnded = false;
+
     private PlayerManager _playerManager;
     public PlayerManager PlayerManager
     {
@@ -73,7 +75,7 @@ public class PlayerController : GeneralPlayer {
 
 	// Update is called once per frame
 	void Update () {
-        if (playerHealth.InsaneConversionAnimPlaying)
+        if (playerHealth.InsaneConversionAnimPlaying || GameEnded)
         {
             return;
         }

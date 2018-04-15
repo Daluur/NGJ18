@@ -9,6 +9,7 @@ public class MainMenuHandler : MonoBehaviour {
 	private static int MAXNUMBEROFJOYSTICKS = 8;
 
 	public GameObject[] PlayerImages;
+	public GameObject[] JoinText;
 	public GameObject PressStartText;
 
 	private List<PlayerControllerData> Players = new List<PlayerControllerData>();
@@ -91,6 +92,7 @@ public class MainMenuHandler : MonoBehaviour {
 	private void UpdateUI()
 	{
 		var currentlyAssignedPlayers = Players.Select(pcd => pcd.PlayerID);
+		var playerPanelsNOTActive = new List<int>();
 		for (int i = 0; i < PlayerImages.Length; i++)
 		{
 			if (currentlyAssignedPlayers.Contains(i + 1))
@@ -100,6 +102,7 @@ public class MainMenuHandler : MonoBehaviour {
 			else
 			{
 				PlayerImages[i].SetActive(false);
+				playerPanelsNOTActive.Add(i);
 			}
 		}
 		if(Players.Count > 0)
@@ -110,14 +113,23 @@ public class MainMenuHandler : MonoBehaviour {
 		{
 			PressStartText.SetActive(false);
 		}
+		for (int i = 0; i < JoinText.Length; i++)
+		{
+			JoinText[i].SetActive(false);
+		}
+		if (playerPanelsNOTActive.Count > 0)
+		{
+			var textToShow = playerPanelsNOTActive.OrderBy(i => i).First();
+			JoinText[textToShow].SetActive(true);
+		}
 	} 
 
 	private void StartGame()
 	{
 		CrossSceneData.Instance.UpdatePlayerListOnStartGame(Players);
-		var numberOfLevels = SceneManager.sceneCountInBuildSettings - 2; // We do not count main menu or credits.
-		var levelToLoad = Random.Range(1, numberOfLevels + 1);
-		SceneManager.LoadScene(levelToLoad);
+		// var numberOfLevels = SceneManager.sceneCountInBuildSettings - 2; // We do not count main menu or credits.
+		// var levelToLoad = Random.Range(1, numberOfLevels + 1);
+		SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings - 2);
 	}
 
 	public void Quit()
