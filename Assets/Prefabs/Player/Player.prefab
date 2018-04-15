@@ -504,7 +504,7 @@ MonoBehaviour:
   InsaneConversionAnimPlaying: 0
   BreakingAnimTimeStart: 1
   BreakingAnimTimeEnd: 1
-  BreakDuration: 10
+  BreakDuration: 8
   BreakParticles: {fileID: 1903493786685586, guid: 4bce4e9347a5bea4d8a44fefdbc26adf,
     type: 2}
   InsanityDamage: 120
