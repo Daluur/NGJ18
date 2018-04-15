@@ -9,7 +9,7 @@ public class PlayerManager : MonoBehaviour {
 
     public List<GeneralPlayer> Players = new List<GeneralPlayer>();
 
-    public const string scoreString = "Score: ";
+	public const string scoreString = "Bug free lines of code: ";
     public GameObject loseScreen;
     public Text ScoreText, FinalScoreText;
     [HideInInspector]
@@ -119,7 +119,7 @@ public class PlayerManager : MonoBehaviour {
 		}
 		else
 		{
-			FinalScoreText.text = scoreString + Score + "\nHighscore: " + currentHighScore;
+			FinalScoreText.text = scoreString + Score + "\nWe all remember this: " + currentHighScore;
 		}
 
 		ScoreText.gameObject.SetActive(false);
