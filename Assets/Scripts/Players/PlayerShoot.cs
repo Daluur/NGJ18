@@ -17,6 +17,7 @@ public class PlayerShoot : MonoBehaviour {
     public float LaserDamagerPerSecond = 20;
     public CapsuleCollider LaserCollider;
 
+	[HideInInspector]
 	public AudioManager audioManager;
 	public AudioClip[] shootingSound;
 

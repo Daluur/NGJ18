@@ -485,7 +485,6 @@ MonoBehaviour:
   shootingSound:
   - {fileID: 8300000, guid: c2cc92d1aa30d4f35b5871544e47c045, type: 3}
   - {fileID: 8300000, guid: 8a89f71efcf304373b87b6616a9db77d, type: 3}
-  laserSound: {fileID: 0}
 --- !u!114 &114559562143642398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -505,7 +504,7 @@ MonoBehaviour:
   InsaneConversionAnimPlaying: 0
   BreakingAnimTimeStart: 1
   BreakingAnimTimeEnd: 1
-  BreakDuration: 10
+  BreakDuration: 8
   BreakParticles: {fileID: 1903493786685586, guid: 4bce4e9347a5bea4d8a44fefdbc26adf,
     type: 2}
   InsanityDamage: 120
@@ -516,7 +515,9 @@ MonoBehaviour:
   PlayerShoot: {fileID: 114378735040527690}
   audioManager: {fileID: 0}
   insanitySound: {fileID: 8300000, guid: e4870e44de5eb4c118dbd8b93c47e65d, type: 3}
-  godModeSound: {fileID: 8300000, guid: b5b8004e62f2545898318742772c5c50, type: 3}
+  godModeSound:
+  - {fileID: 8300000, guid: b5b8004e62f2545898318742772c5c50, type: 3}
+  - {fileID: 8300000, guid: aa7df4cab7e93dd4999b914b26e1af97, type: 3}
 --- !u!114 &114932521369057716
 MonoBehaviour:
   m_ObjectHideFlags: 1

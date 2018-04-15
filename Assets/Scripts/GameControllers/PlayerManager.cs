@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Linq;
 
@@ -108,11 +109,12 @@ public class PlayerManager : MonoBehaviour {
 	private void EndGame()
 	{
 		gameEnded = true;
-		var currentHighScore = PlayerPrefs.GetInt("HighScore");
+		var buildIndex = SceneManager.GetActiveScene().buildIndex;
+		var currentHighScore = PlayerPrefs.GetInt("HighScore" + buildIndex);
 
 		if (Score > currentHighScore)
 		{
-			PlayerPrefs.SetInt("HighScore", Score);
+			PlayerPrefs.SetInt("HighScore" + buildIndex, Score);
 			FinalScoreText.text = "New highscore: " + Score;
 		}
 		else
